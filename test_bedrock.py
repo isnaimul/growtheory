@@ -11,17 +11,15 @@ prompt = "Say hello and explain what you are."
 
 # we call nova micro via the invoke_model function for the bedrock-runtime
 # body is expected to be a json-formatted string, so we write data as python dict and convert it to a json string
-response = bedrock.invoke_model(
+response = bedrock.converse(
     modelId="amazon.nova-micro-v1:0",
-    body=json.dumps(
-        {
-            "messages": [{"role": "user", "content": "hello"}],
-            "max_tokens": 100,
-            "temperature": 0.7,
-        }
-    ),
+    messages=[
+        {"role": "user", "content": [{"text": "Hello!"}]}
+    ],
+    inferenceConfig={
+        "maxTokens": 100,
+        "temperature": 0.7
+    }
 )
 
-# we get a dict back
-result = json.loads(response["body".read()])
-print(result["output"]["message"]["content"][0]["text"])
+print(response['output']['message']['content'][0]['text'])
