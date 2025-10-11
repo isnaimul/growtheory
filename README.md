@@ -70,5 +70,5 @@ git push origin feature/your-feature-name
 ```
 
 ### Useful Links
-[Bedrock](https://docs.aws.amazon.com/bedrock/)
-[Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html)
+1. [Bedrock](https://docs.aws.amazon.com/bedrock/)
+2. [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html)
