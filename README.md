@@ -3,6 +3,7 @@
 An AI-powered platform that helps job seekers analyze companies and make informed career decisions using AWS Bedrock.
 
 ## Project Status
+### this is a entire new sentence 
 
 **Hackathon:** AWS AI Agent Global Hackathon  
 **Days Remaining:** 9  
