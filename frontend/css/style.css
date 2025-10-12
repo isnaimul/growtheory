@@ -1,0 +1,427 @@
+/* // PART 3A: Reset & Base Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* // PART 3B: Navigation */
+
+.navbar {
+    padding: 20px 0;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: #000;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.cta-button {
+    padding: 10px 24px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cta-button:hover {
+    background: #eee;
+    transform: translateY(-1px);
+}
+
+/* // PART 3C: Hero Section */
+
+.hero {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #888;
+    margin-bottom: 50px;
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 16px 20px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1em;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.analyze-button {
+    padding: 16px 32px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.analyze-button:hover {
+    background: #eee;
+}
+
+.helper-text {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* // PART 3D: Feature Sections */
+
+.feature-section {
+    padding: 100px 0;
+    border-top: 1px solid #111;
+}
+
+.feature-section.alternate {
+    background: #0a0a0a;
+}
+
+.feature-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.feature-content.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.feature-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.feature-text p {
+    font-size: 1.1em;
+    color: #aaa;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #ccc;
+}
+
+.feature-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4ade80;
+    font-weight: 700;
+}
+
+.placeholder-box {
+    background: #111;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    padding: 80px 40px;
+    text-align: center;
+    color: #666;
+}
+
+.placeholder-hint {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* // PART 3E: CTA Section */
+
+.cta-section {
+    padding: 100px 0;
+    text-align: center;
+    background: #0a0a0a;
+}
+
+.cta-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    color: #888;
+    margin-bottom: 40px;
+}
+
+.cta-button-large {
+    padding: 18px 48px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cta-button-large:hover {
+    background: #eee;
+    transform: translateY(-2px);
+}
+
+/* // PART 3F: Footer */
+
+.footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #111;
+    color: #666;
+}
+
+/* // PART 3G: Loading Overlay */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loading-overlay.hidden {
+    display: none;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #333;
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-detail {
+    color: #666;
+    margin-top: 10px;
+}
+
+/* //PART 3H: Report Page Styles */
+
+.report-container {
+    padding: 60px 0;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #222;
+}
+
+.report-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.report-meta {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.score-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.score-number {
+    font-size: 5em;
+    font-weight: 900;
+    color: #4ade80;
+    margin-bottom: 10px;
+}
+
+.score-label {
+    font-size: 1.2em;
+    color: #888;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.metric-box {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: #4ade80;
+    margin-bottom: 10px;
+}
+
+.metric-label {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.verdict-card,
+.action-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.verdict-card h3,
+.action-card h3,
+.insights-container h3 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.insights-container {
+    margin-bottom: 30px;
+}
+
+.insight-item {
+    background: #0a0a0a;
+    border-left: 3px solid;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+.insight-item.positive {
+    border-left-color: #4ade80;
+}
+
+.insight-item.neutral {
+    border-left-color: #eab308;
+}
+
+.insight-item.negative {
+    border-left-color: #ef4444;
+}
+
+.details-section {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.details-section summary {
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+/* // PART 3I: Responsive */
+
+@media (max-width: 768px) {
+    .feature-content,
+    .feature-content.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero h1 {
+        font-size: 2em;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
