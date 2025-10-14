@@ -1,5 +1,7 @@
+from strands.tools import tool
 import yfinance as yf
 
+@tool
 def analyze_company_finances(ticker_symbol):
     """
     Analyzes a company's financial health using Yahoo Finance data.
@@ -10,7 +12,6 @@ def analyze_company_finances(ticker_symbol):
     Returns:
         dict: Financial analysis data
     """
-    
     try:
         # Fetch company data
         company = yf.Ticker(ticker_symbol)
