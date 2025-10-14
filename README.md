@@ -53,13 +53,8 @@ backend/
 git clone https://github.com/alisayeed248/growtheory.git
 cd growtheory
 
-# Create virtual environment
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1  # Windows
-source .venv/bin/activate      # Mac/Linux
-
-# Install dependencies
-pip install strands-agents boto3 yfinance
+# If on Windows, just run the ps1.
+.\dev.ps1
 ```
 
 ### Running the Agent
