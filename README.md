@@ -5,7 +5,7 @@ An AI-powered platform that helps job seekers analyze companies and make informe
 ## Project Status
 
 **Hackathon:** AWS AI Agent Global Hackathon  
-**Days Remaining:** 6 
+**Days Remaining: 6** 
 **Day 4 Progress:**
 - ✅ Pivoted from Lambda/Bedrock Agent to Strands SDK
 - ✅ Financial analyzer tool with yfinance integration
@@ -34,11 +34,13 @@ An AI-powered platform that helps job seekers analyze companies and make informe
 - **Python:** 3.13
 
 ## Project Structure
+```bash
 backend/
 ├── agents/          # Strands agents
 ├── tools/           # Custom tools (financial, news, etc.)
 ├── tests/           # Test files
 └── config/          # Configuration and prompts
+```
 
 ## Development Setup
 
