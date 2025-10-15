@@ -8,9 +8,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # copy our application code standard Lambda task root
-COPY lambda_handler.py .
-COPY agents/ ./agents/
-COPY tools/ ./tools/
+COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
+COPY agents/ ${LAMBDA_TASK_ROOT}/agents/
+COPY tools/ ${LAMBDA_TASK_ROOT}/tools/
 
 # set handler to file_name.function_name
 CMD ["lambda_handler.lambda_handler"]
