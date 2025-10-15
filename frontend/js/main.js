@@ -3,14 +3,14 @@
 // API Configuration - UPDATE THIS WHEN BACKEND IS READY
 const API_CONFIG = {
     // Local development
-    BASE_URL: 'http://localhost:3000',  // Your backend will run here
+    BASE_URL: process.env.BASE_URL,  // Your backend will run here
     
     // Production (AWS API Gateway) - update later
     // BASE_URL: 'https://your-api-gateway-url.amazonaws.com/prod',
     
     ENDPOINTS: {
-        ANALYZE: '/api/analyze',
-        STATUS: '/api/status'
+        ANALYZE: '/analyze',
+        STATUS: '/status'
     }
 };
 
