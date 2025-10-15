@@ -1,10 +1,10 @@
-# backend/agents/company_analyst.py
 from strands import Agent
 from strands.models.bedrock import BedrockModel
 import sys
 import os
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Add parent directory to path for imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tools.financial_analyzer import analyze_company_finances
 
 ANALYST_PROMPT = """You are a company intelligence analyst helping job seekers.

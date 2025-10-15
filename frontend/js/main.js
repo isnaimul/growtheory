@@ -97,9 +97,7 @@ async function analyzeCompany(companyName) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            company: companyName,
-            // Add user profile data when ready
-            // userProfile: getUserProfile()
+            company: companyName
         })
     });
     
@@ -191,43 +189,43 @@ function hideLoading() {
 
 // Uncomment this to test frontend without backend
 
-async function analyzeCompany(companyName) {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
+// async function analyzeCompany(companyName) {
+//     // Simulate API delay
+//     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Return mock data
-    return {
-        company: companyName,
-        role: 'Software Engineer',
-        timestamp: new Date().toISOString(),
-        score: 68,
-        hiringVelocity: 8.5,
-        stabilityScore: 9,
-        layoffRisk: 5,
-        verdict: `You're a strong candidate for ${companyName}. Your background aligns well with their hiring patterns.`,
-        insights: [
-            {
-                type: 'positive',
-                title: 'Strong Alumni Network',
-                description: 'Multiple alumni from your school work here'
-            },
-            {
-                type: 'positive',
-                title: 'Fresh Posting',
-                description: 'Job posted recently with high hiring velocity'
-            },
-            {
-                type: 'neutral',
-                title: '6-Week Timeline',
-                description: 'Average interview process takes 42-49 days'
-            }
-        ],
-        actionSteps: [
-            'Apply on company careers page today',
-            'Reach out to alumni connections',
-            'Prepare for technical assessment',
-            'Attend upcoming networking events'
-        ],
-        detailedAnalysis: '<p>Detailed analysis will go here...</p>'
-    };
-}
+//     // Return mock data
+//     return {
+//         company: companyName,
+//         role: 'Software Engineer',
+//         timestamp: new Date().toISOString(),
+//         score: 68,
+//         hiringVelocity: 8.5,
+//         stabilityScore: 9,
+//         layoffRisk: 5,
+//         verdict: `You're a strong candidate for ${companyName}. Your background aligns well with their hiring patterns.`,
+//         insights: [
+//             {
+//                 type: 'positive',
+//                 title: 'Strong Alumni Network',
+//                 description: 'Multiple alumni from your school work here'
+//             },
+//             {
+//                 type: 'positive',
+//                 title: 'Fresh Posting',
+//                 description: 'Job posted recently with high hiring velocity'
+//             },
+//             {
+//                 type: 'neutral',
+//                 title: '6-Week Timeline',
+//                 description: 'Average interview process takes 42-49 days'
+//             }
+//         ],
+//         actionSteps: [
+//             'Apply on company careers page today',
+//             'Reach out to alumni connections',
+//             'Prepare for technical assessment',
+//             'Attend upcoming networking events'
+//         ],
+//         detailedAnalysis: '<p>Detailed analysis will go here...</p>'
+//     };
+// }
