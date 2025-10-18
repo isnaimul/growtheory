@@ -22,8 +22,8 @@ const Hero = () => {
 
     try {
       // Use mock data for now - switch to real API when ready
-      // const result = await apiService.analyzeCompany(company);
-      const result = await apiService.analyzeCompany(company);
+       const result = await apiService.analyzeCompany(company);
+      //const result = await apiService.analyzeCompany(company);
       
       setReportData(result);
       navigate('/report');
