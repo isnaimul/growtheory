@@ -16,3 +16,5 @@ print(result.get('news_analysis'))
 
 print("\n=== COMBINED ASSESSMENT ===")
 print(result.get('combined_assessment'))
+print("\n=== FULL RESULT ===")
+print(result)  # Add this to see everything
