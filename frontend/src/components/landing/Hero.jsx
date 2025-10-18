@@ -21,9 +21,9 @@ const Hero = () => {
     setIsLoading(true);
 
     try {
-      // Use mock data for now - switch to real API when ready
-       const result = await apiService.analyzeCompany(company);
-      //const result = await apiService.analyzeCompany(company);
+      // Force mock data for debugging
+      const result = await apiService.getMockData(company);
+      // const result = await apiService.analyzeCompany(company);
       
       setReportData(result);
       navigate('/report');
