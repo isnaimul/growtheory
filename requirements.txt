@@ -2,3 +2,6 @@ boto3
 yfinance
 strands-agents
 strands-agents-tools
+fredapi
+python-dotenv
+newsapi-python
