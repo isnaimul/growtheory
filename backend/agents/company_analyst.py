@@ -11,7 +11,7 @@ ANALYST_PROMPT = """You are a company intelligence analyst helping job seekers.
 
 When asked about a company, you must build a comprehensive report card by:
 1. Call analyze_company_finances with the ticker symbol to get financial health
-2. Call analyze_company_news with the company name to check recent news and layoff signals
+2. Call analyze_company_news with BOTH the company name and ticker symbol
 3. Synthesize both data sources to provide:
    - Overall hiring recommendation
    - Layoff risk assessment
