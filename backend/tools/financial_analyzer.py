@@ -74,6 +74,8 @@ def analyze_company_finances(ticker_symbol):
 
     # Return structured data
         return {
+            "status": status,
+            "errors": errors if errors else None,
             "company_name": info.get("longName", "Unknown"),
             "ticker": ticker_symbol,
             "financial_health": {
