@@ -10,37 +10,58 @@ NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 ALPHA_URL = "https://www.alphavantage.co/query"
 
+API_TIMEOUT = 10
+
 
 @tool
 def analyze_company_news(company_name, ticker_symbol):
     """
     Analyzes recent news and market sentiment about a company using multiple sources.
-    
-    Args:
-        company_name (str): Company name (e.g., "Microsoft", "Amazon")
-        ticker_symbol (str): Stock ticker (e.g., "MSFT", "AMZN")
-    
-    Returns:
-        dict: Comprehensive news and sentiment analysis
     """
+    errors = []
+    alpha_sentiment = None
+    news_articles = None
+
     try:
         # Get AlphaVantage market sentiment (quantitative)
         alpha_sentiment = get_alphavantage_sentiment(ticker_symbol)
-        
+        if "error" in alpha_sentiment:
+            errors.append(f"AlphaVantage: {alpha_sentiment['error']}")
+            alpha_sentiment = None
+    except Exception as e:
+        errors.append(f"AlphaVantage failed: {str(e)}")
+        alpha_sentiment = None
+
+    try:
         # Get NewsAPI articles (qualitative, layoff detection)
         news_articles = get_newsapi_articles(company_name)
-        
-        # Combine analyses
-        return {
-            "company": company_name,
-            "ticker": ticker_symbol,
-            "market_sentiment": alpha_sentiment,
-            "news_analysis": news_articles,
-            "combined_assessment": generate_combined_assessment(alpha_sentiment, news_articles)
-        }
-        
+        if "error" in news_articles:
+            errors.append(f"NewsAPI: {news_articles['error']}")
+            news_articles = None
     except Exception as e:
-        return {"error": f"Failed to analyze news for {company_name}: {str(e)}"}
+        errors.append(f"NewsAPI failed: {str(e)}")
+        news_articles = None
+
+    # Determine status
+    if alpha_sentiment is None and news_articles is None:
+        return {
+            "status": "failed",
+            "errors": errors,
+            "company": company_name,
+            "ticker": ticker_symbol
+        }
+    
+    status = "complete" if (alpha_sentiment and news_articles) else "partial"
+    
+    return {
+        "status": status,
+        "errors": errors if errors else None,
+        "company": company_name,
+        "ticker": ticker_symbol,
+        "market_sentiment": alpha_sentiment or {"error": "unavailable"},
+        "news_analysis": news_articles or {"error": "unavailable"},
+        "combined_assessment": generate_combined_assessment(alpha_sentiment, news_articles)
+    }
 
 
 def get_alphavantage_sentiment(ticker_symbol):
@@ -52,7 +73,7 @@ def get_alphavantage_sentiment(ticker_symbol):
             'tickers': ticker_symbol,
             'apikey': ALPHAVANTAGE_API_KEY,
             'limit': 20
-        }, timeout=10)
+        }, timeout=API_TIMEOUT)
         
         news_data = response.json().get('feed', [])
         
@@ -172,13 +193,50 @@ def analyze_job_signals(headlines):
 
 
 def generate_combined_assessment(alpha_sentiment, news_analysis):
-    """Synthesize both data sources"""
+    """Synthesize both data sources - handles partial data"""
     
-    # Extract key metrics
+    # Handle missing data gracefully
+    if alpha_sentiment is None and news_analysis is None:
+        return {
+            "recommendation": "INSUFFICIENT DATA - Cannot assess",
+            "confidence": "none"
+        }
+    
+    if alpha_sentiment is None:
+        # Only news data available
+        job_signals = news_analysis.get('job_signals', {})
+        if job_signals.get('layoff_risk') == 'HIGH':
+            return {
+                "recommendation": "CAUTION - Layoff signals detected (limited data)",
+                "confidence": "low"
+            }
+        return {
+            "recommendation": "MODERATE - Limited sentiment data available",
+            "confidence": "low"
+        }
+    
+    if news_analysis is None:
+        # Only sentiment data available
+        sentiment_score = alpha_sentiment.get('sentiment_score', 0)
+        if sentiment_score > 0.15:
+            return {
+                "recommendation": "POSITIVE - Good market sentiment (limited news data)",
+                "confidence": "moderate"
+            }
+        elif sentiment_score < -0.15:
+            return {
+                "recommendation": "CAUTION - Negative market sentiment",
+                "confidence": "moderate"
+            }
+        return {
+            "recommendation": "MODERATE - Limited news context",
+            "confidence": "moderate"
+        }
+    
+    # Both datasets available - full analysis
     sentiment_score = alpha_sentiment.get('sentiment_score', 0)
     job_signals = news_analysis.get('job_signals', {})
     
-    # Overall recommendation
     if sentiment_score > 0.15 and job_signals.get('layoff_risk') == 'LOW':
         recommendation = "STRONG - Positive market sentiment and stable employment"
     elif sentiment_score < -0.15 or job_signals.get('layoff_risk') == 'HIGH':
