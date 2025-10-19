@@ -7,32 +7,51 @@ from dotenv import load_dotenv
 load_dotenv()
 FRED_API_KEY = os.getenv("FRED_API_KEY")
 
+API_TIMEOUT = 10
 
 @tool
 def analyze_company_finances(ticker_symbol):
     """
     Analyzes a company's financial health using Yahoo Finance data.
-
-    Args:
-        ticker_symbol (str): Stock ticker symbol (e.g., "MSFT", "AAPL")
-
-    Returns:
-        dict: Financial analysis data
     """
-    try:
-        # Fetch company data
+    errors = []
+    status = "complete"
+
+    # try to fetch Yahoo Finance data
+    try: 
         company = yf.Ticker(ticker_symbol)
+
+        # get stock history from last 3 months
         info = company.info
+        hist = company.history(period="3mo", timeout=API_TIMEOUT)
 
-        # Get stock history (last 3 months for trend analysis)
-        hist = company.history(period="3mo")
-
-        econ_context = get_economic_context()
-
+        # if somehow we can't find history, just provide empty
         if hist.empty:
-            return {"error": f"No data found for ticker: {ticker_symbol}"}
+            errors.append("No stock history found")
+            return {
+                "status": "failed",
+                "errors": errors,
+                "ticker": ticker_symbol
+            }
+    
+        # if somehow we get an error, say same thing
+    except Exception as e:
+        errors.append(f"Yahoo Finance error: {str(e)}")
+        return {
+            "status": "failed",
+            "errors": errors,
+            "ticker": ticker_symbol
+        }
 
-        # Extract key metrics
+    # let's try to get economic context
+    econ_context = get_economic_context()
+
+    if "error" in econ_context:
+        errors.append("Economic data unavailable (using defaults)")
+        status = "partial"
+
+    # if everything's good, let's try to calculate metrics
+    try: 
         current_price = hist["Close"].iloc[-1]
         month_ago_price = (
             hist["Close"].iloc[-22] if len(hist) > 22 else hist["Close"].iloc[0]
@@ -53,7 +72,7 @@ def analyze_company_finances(ticker_symbol):
         # Identify signals
         signals = identify_signals(info, price_change_pct)
 
-        # Return structured data
+    # Return structured data
         return {
             "company_name": info.get("longName", "Unknown"),
             "ticker": ticker_symbol,
@@ -77,7 +96,12 @@ def analyze_company_finances(ticker_symbol):
         }
 
     except Exception as e:
-        return {"error": f"Failed to analyze {ticker_symbol}: {str(e)}"}
+        errors.append(f"Calculation error: {str(e)}")
+        return {
+            "status": "failed",
+            "errors": errors,
+            "ticker": ticker_symbol
+        }
 
 
 def calculate_health_score(info, price_change_pct, econ_context):
@@ -131,8 +155,11 @@ def get_economic_context():
         }
     except Exception as e:
         # Fallback if FRED fails
+        print(f"[WARNING] FRED API failed: {str(e)}, using defaults")
         return {
+            "error": "FRED API unavailable",
             "unemployment_rate": 4.0,
+            "avg_hourly_wage": 36.06,
             "avg_annual_salary": 75000
         }
 
