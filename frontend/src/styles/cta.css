@@ -1,0 +1,37 @@
+.cta-section {
+  padding: 100px 0;
+  text-align: center;
+  background: #0a0a0a;
+}
+
+.cta-section h2 {
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cta-section p {
+  font-size: 1.2em;
+  color: #888;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.cta-button-large {
+  padding: 18px 48px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1em;
+  font-family: 'Economica', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cta-button-large:hover {
+  background: #eee;
+  transform: translateY(-2px);
+}

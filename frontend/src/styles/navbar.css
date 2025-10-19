@@ -1,0 +1,38 @@
+.navbar {
+  padding: 20px 0;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  background: #000;
+  z-index: 100;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: 'Doto', sans-serif;
+  color: #fff;
+}
+
+.cta-button {
+  padding: 10px 24px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: 'Economica', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cta-button:hover {
+  background: #eee;
+  transform: translateY(-1px);
+}
