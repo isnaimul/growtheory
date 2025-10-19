@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { TrendingUp, Clock, Award } from 'lucide-react';
-import '../../styles/dashboard.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { TrendingUp, Clock, Award } from "lucide-react";
+import "../../styles/dashboard.css";
+import apiService from "../../services/api";
+
+console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
+console.log(
+  "Full Dashboard URL:",
+  `${import.meta.env.VITE_API_BASE_URL}/dashboard`
+);
 
 const Dashboard = () => {
   const [companies, setCompanies] = useState([]);
@@ -14,11 +21,12 @@ const Dashboard = () => {
 
   const fetchDashboard = async () => {
     try {
-      const response = await fetch('https://lhj8hphalb.execute-api.us-east-1.amazonaws.com/prod/dashboard');
-      const data = await response.json();
+      console.log("Fetching dashboard...");
+      const data = await apiService.getDashboard();
+      console.log("Dashboard data received:", data);
       setCompanies(data);
     } catch (error) {
-      console.error('Failed to fetch dashboard:', error);
+      console.error("Failed to fetch dashboard:", error);
     } finally {
       setLoading(false);
     }
@@ -32,20 +40,20 @@ const Dashboard = () => {
     const now = new Date();
     const then = new Date(timestamp);
     const hours = Math.floor((now - then) / (1000 * 60 * 60));
-    
-    if (hours < 1) return 'Just now';
-    if (hours === 1) return '1 hour ago';
+
+    if (hours < 1) return "Just now";
+    if (hours === 1) return "1 hour ago";
     if (hours < 24) return `${hours} hours ago`;
     const days = Math.floor(hours / 24);
-    if (days === 1) return '1 day ago';
+    if (days === 1) return "1 day ago";
     return `${days} days ago`;
   };
 
   const getGradeColor = (grade) => {
-    if (grade.startsWith('A')) return 'grade-a';
-    if (grade.startsWith('B')) return 'grade-b';
-    if (grade.startsWith('C')) return 'grade-c';
-    return 'grade-d';
+    if (grade.startsWith("A")) return "grade-a";
+    if (grade.startsWith("B")) return "grade-b";
+    if (grade.startsWith("C")) return "grade-c";
+    return "grade-d";
   };
 
   if (loading) {
@@ -64,7 +72,9 @@ const Dashboard = () => {
       <section className="dashboard-section">
         <div className="container">
           <h2 className="dashboard-title">Recently Analyzed Companies</h2>
-          <p className="empty-state">No companies analyzed yet. Search above to get started!</p>
+          <p className="empty-state">
+            No companies analyzed yet. Search above to get started!
+          </p>
         </div>
       </section>
     );
@@ -88,7 +98,7 @@ const Dashboard = () => {
                   {company.grade}
                 </div>
               </div>
-              
+
               <div className="card-stats">
                 <div className="stat">
                   <Award size={16} />
@@ -99,7 +109,7 @@ const Dashboard = () => {
                   <span>{getTimeAgo(company.timestamp)}</span>
                 </div>
               </div>
-              
+
               <div className="card-footer">
                 <TrendingUp size={14} />
                 <span>View Full Report</span>
