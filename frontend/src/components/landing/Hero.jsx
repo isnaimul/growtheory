@@ -11,29 +11,31 @@ const Hero = () => {
   const { setReportData, setIsLoading } = useReport();
 
   const handleAnalyze = async () => {
-    const company = companyInput.trim();
+  const company = companyInput.trim();
+  
+  if (!company) {
+    alert('Please enter a company name');
+    return;
+  }
+
+  setIsLoading(true);
+
+  try {
+    // Call real API
+    const result = await apiService.analyzeCompany(company);
     
-    if (!company) {
-      alert('Please enter a company name');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      // Force mock data for debugging
-      const result = await apiService.getMockData(company);
-      // const result = await apiService.analyzeCompany(company);
-      
-      setReportData(result);
-      navigate('/report');
-    } catch (error) {
-      alert('Error analyzing company. Please try again.');
-      console.error('Analysis error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    // Navigate to report page with ticker
+    navigate(`/report?ticker=${result.ticker}`);
+    
+    // Clear input
+    setCompanyInput('');
+  } catch (error) {
+    alert('Error analyzing company. Please try again.');
+    console.error('Analysis error:', error);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
