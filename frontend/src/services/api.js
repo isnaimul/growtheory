@@ -20,15 +20,29 @@ class ApiService {
         }),
       });
 
+      const data = await response.json();
+
+      // Handle 404 or error responses
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorMessage = data.error || `Failed to analyze company: ${response.status}`;
+        throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      // Check if the response indicates company not found
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Validate we got actual data back
+      if (!data.company || !data.score) {
+        throw new Error("Invalid response from server - missing required data");
+      }
+
       return data;
     } catch (error) {
       console.error("Error analyzing company:", error);
-      throw error;
+      // Re-throw with clear message
+      throw new Error(error.message || "Unable to analyze company. Please check the company name and try again.");
     }
   }
 
@@ -68,58 +82,26 @@ class ApiService {
     try {
       const response = await fetch(`${this.baseUrl}/report?ticker=${ticker}`);
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorMessage = data.error || `Report not found for ${ticker}`;
+        throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      // Validate report data
+      if (!data.company || !data.score) {
+        throw new Error("Invalid report data received");
+      }
+
       return data;
     } catch (error) {
       console.error("Error fetching report:", error);
-      throw error;
+      throw new Error(error.message || "Unable to load report. Please try again.");
     }
   }
 
-  // Mock data for testing without backend
-  async getMockData(companyName) {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    return {
-      company: companyName,
-      role: "Software Engineer",
-      timestamp: new Date().toISOString(),
-      score: 68,
-      hiringVelocity: 8.5,
-      stabilityScore: 9,
-      layoffRisk: 5,
-      verdict: `You're a strong candidate for ${companyName}. Your background aligns well with their hiring patterns.`,
-      insights: [
-        {
-          type: "positive",
-          title: "Strong Alumni Network",
-          description: "Multiple alumni from your school work here",
-        },
-        {
-          type: "positive",
-          title: "Fresh Posting",
-          description: "Job posted recently with high hiring velocity",
-        },
-        {
-          type: "neutral",
-          title: "6-Week Timeline",
-          description: "Average interview process takes 42-49 days",
-        },
-      ],
-      actionSteps: [
-        "Apply on company careers page today",
-        "Reach out to alumni connections",
-        "Prepare for technical assessment",
-        "Attend upcoming networking events",
-      ],
-      detailedAnalysis: "<p>Detailed analysis will go here...</p>",
-    };
-  }
+  // REMOVED getMockData() - no more mock data!
 }
 
 export default new ApiService();
