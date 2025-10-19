@@ -29,7 +29,7 @@ Format your analysis clearly:
 - Recommendation (APPLY / RESEARCH MORE / AVOID)
 """
 
-model = BedrockModel(model_id="arn:aws:bedrock:us-east-1:975050287073:inference-profile/us.anthropic.claude-3-5-haiku-20241022-v1:0")
+model = BedrockModel(model_id="arn:aws:bedrock:us-east-1:975050287073:inference-profile/us.anthropic.claude-3-5-haiku-20241022-v1:0", region_name="us-east-1")
 
 company_agent = Agent(
     model=model, 
