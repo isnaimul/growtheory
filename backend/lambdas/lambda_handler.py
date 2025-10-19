@@ -2,15 +2,21 @@ import json
 import re
 import traceback
 import boto3
+import os
 import time
 import random
 from datetime import datetime, timedelta
 from decimal import Decimal
 from agents.company_analyst import company_agent
 
+TABLE_NAME = os.environ.get("COMPANY_CACHE_TABLE_NAME")
+
+if not TABLE_NAME:
+    raise EnvironmentError("COMPANY_CACHE_TABLE_NAME environment variable not set. Cannot initialize DynamoDB.")
+
 # DynamoDB setup
 dynamodb = boto3.resource("dynamodb")
-cache_table = dynamodb.Table("GrowTheory-CompanyCache")
+cache_table = dynamodb.Table(TABLE_NAME)
 
 CACHE_DURATION_HOURS = 24
 
