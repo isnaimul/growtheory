@@ -2,44 +2,28 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReport } from '../../context/ReportContext';
 import apiService from '../../services/api';
-import { Search, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
+import CompanySearch from './CompanySearch';
 import '../../styles/hero.css';
 
 const Hero = () => {
-  const [companyInput, setCompanyInput] = useState('');
   const navigate = useNavigate();
-  const { setReportData, setIsLoading } = useReport();
+  const { setIsLoading } = useReport();
 
-  const handleAnalyze = async () => {
-  const company = companyInput.trim();
-  
-  if (!company) {
-    alert('Please enter a company name');
-    return;
-  }
+  const handleCompanySelect = async (ticker, name) => {
+    setIsLoading(true);
 
-  setIsLoading(true);
-
-  try {
-    // Call real API
-    const result = await apiService.analyzeCompany(company);
-    
-    // Navigate to report page with ticker
-    navigate(`/report?ticker=${result.ticker}`);
-    
-    // Clear input
-    setCompanyInput('');
-  } catch (error) {
-    alert('Error analyzing company. Please try again.');
-    console.error('Analysis error:', error);
-  } finally {
-    setIsLoading(false);
-  }
-};
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleAnalyze();
+    try {
+      // Call API with ticker directly
+      const result = await apiService.analyzeCompany(ticker);
+      
+      // Navigate to report page
+      navigate(`/report?ticker=${result.ticker}`);
+    } catch (error) {
+      alert('Error analyzing company. Please try again.');
+      console.error('Analysis error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -50,23 +34,13 @@ const Hero = () => {
         <p className="subtitle">AI-powered intelligence that tells you which companies are worth your time</p>
         
         <div className="search-container">
-          <div className="search-input-wrapper">
-            <Search className="search-icon" size={20} />
-            <input 
-              type="text" 
-              value={companyInput}
-              onChange={(e) => setCompanyInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Enter company name (e.g., Stripe, Google, Airbnb)"
-              className="search-input"
-            />
-          </div>
+          <CompanySearch onSelect={handleCompanySelect} />
           <button 
-            onClick={handleAnalyze}
             className="analyze-button"
+            style={{ pointerEvents: 'none', opacity: 0.6 }}
           >
             <Sparkles size={18} />
-            <span>Analyze Company</span>
+            <span>Analyze</span>
           </button>
         </div>
         
