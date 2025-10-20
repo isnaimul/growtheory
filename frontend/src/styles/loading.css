@@ -13,28 +13,89 @@
 
 .loading-content {
   text-align: center;
+  max-width: 400px;
+  width: 90%;
 }
 
 .spinner {
   width: 50px;
   height: 50px;
   border: 3px solid #333;
-  border-top-color: #fff;
+  border-top-color: #38bdf8;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.loading-content p {
+.loading-title {
   color: #fff;
   font-family: 'Economica', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
-.loading-detail {
-  color: #666;
-  margin-top: 10px;
+/* Shimmer placeholders */
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.skeleton {
+  height: 14px;
+  background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Console log style */
+.loading-logs {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 10px;
+  text-align: left;
+  color: #9ca3af;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  max-height: 120px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.log-line {
+  margin: 0;
+  line-height: 1.3em;
+}
+
+/* Progress bar */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #3b82f6);
+  transition: width 0.3s ease;
 }
