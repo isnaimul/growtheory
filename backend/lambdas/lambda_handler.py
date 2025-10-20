@@ -173,7 +173,7 @@ def get_or_create_analysis(company, ticker):
                         "score": cached_data["score"],
                         "grade": cached_data["grade"],
                         "timestamp": cached_data["timestamp"],
-                        "detailedAnalysis": cached_data["full_analysis"],
+                        "full_analysis": cached_data["full_analysis"],
                     }
                 )
             else:
@@ -227,7 +227,7 @@ def get_or_create_analysis(company, ticker):
         "score": score,
         "grade": grade,
         "timestamp": timestamp,
-        "detailedAnalysis": response_text,
+        "full_analysis": response_text,
     }
 
 

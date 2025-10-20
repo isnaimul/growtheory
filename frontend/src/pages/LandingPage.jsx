@@ -6,6 +6,7 @@ import Hero from '../components/landing/Hero';
 import Dashboard from '../components/landing/Dashboard';
 import FeatureCarousel from '../components/landing/FeatureCarousel';
 import CTASection from '../components/landing/CTASection';
+import Disclaimer from '../components/layout/Disclaimer';
 import { useReport } from '../context/ReportContext';
 
 const LandingPage = () => {
@@ -18,6 +19,7 @@ const LandingPage = () => {
       <Dashboard />
       <FeatureCarousel />
       <CTASection />
+      <Disclaimer />
       <Footer />
       <LoadingOverlay isVisible={isLoading} />
     </>

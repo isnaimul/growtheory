@@ -1,39 +1,39 @@
 import React, { useState } from 'react';
-import { Award, Target, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award, DollarSign, AlertTriangle, ChevronLeft, ChevronRight } from 'lucide-react';
 import '../../styles/carousel.css';
 
 const features = [
   {
     id: 1,
     icon: Award,
-    title: "Company Report Cards",
-    description: "Get a comprehensive grade on every company's hiring activity. We analyze 20+ data points to give you a clear score on hiring velocity, stability, and growth.",
+    title: "Instant Company Grading",
+    description: "Get a clear A-F grade on every company in seconds. Know immediately if a company is worth your application based on financial health, stability, and career opportunities.",
     features: [
-      "Overall hiring velocity score (0-10)",
-      "Company stability rating",
-      "Interview probability for your profile"
+      "Overall health score (0-100)",
+      "Letter grade for quick assessment",
+      "Data-driven evaluation"
     ]
   },
   {
     id: 2,
-    icon: Target,
-    title: "Hiring Signals",
-    description: "See positive and negative indicators at a glance. No more guessing if a company is actually hiring or just collecting resumes.",
+    icon: DollarSign,
+    title: "Financial Health Transparency",
+    description: "See the numbers that matter. Revenue, market cap, profit margins, and employee count - understand if a company can offer job security and competitive compensation.",
     features: [
-      "Positive momentum indicators",
-      "Risk signals and red flags",
-      "Real-time hiring activity"
+      "Real-time financial metrics",
+      "Market capitalization and revenue",
+      "Profitability and growth indicators"
     ]
   },
   {
     id: 3,
-    icon: Shield,
-    title: "Layoff Risk Prediction",
-    description: "Know before you apply. Our AI analyzes financial health, industry trends, and company signals to predict layoff risk over the next 12 months.",
+    icon: AlertTriangle,
+    title: "Career Risk Assessment",
+    description: "Make informed decisions with comprehensive pros and cons. Understand company culture, growth potential, and red flags before you invest time in an application.",
     features: [
-      "12-month stability forecast",
-      "Financial health analysis",
-      "Industry trend indicators"
+      "Green flags and opportunities",
+      "Red flags and risk factors",
+      "Work culture insights"
     ]
   }
 ];
@@ -59,10 +59,9 @@ const FeatureCarousel = () => {
   return (
     <section className="feature-carousel-section">
       <div className="container">
-        <h2 className="carousel-heading">Powerful Features</h2>
+        <h2 className="carousel-heading">What You Get</h2>
         
         <div className="carousel-container">
-          {/* Navigation Arrows */}
           <button 
             className="carousel-nav prev" 
             onClick={prevSlide}
@@ -71,7 +70,6 @@ const FeatureCarousel = () => {
             <ChevronLeft size={32} />
           </button>
 
-          {/* Main Card */}
           <div className="carousel-card-wrapper">
             <div className="carousel-card" key={currentFeature.id}>
               <div className="carousel-icon-wrapper">
@@ -90,7 +88,6 @@ const FeatureCarousel = () => {
             </div>
           </div>
 
-          {/* Navigation Arrows */}
           <button 
             className="carousel-nav next" 
             onClick={nextSlide}
@@ -100,7 +97,6 @@ const FeatureCarousel = () => {
           </button>
         </div>
 
-        {/* Dots Indicator */}
         <div className="carousel-dots">
           {features.map((_, index) => (
             <button
@@ -112,7 +108,6 @@ const FeatureCarousel = () => {
           ))}
         </div>
 
-        {/* Counter */}
         <div className="carousel-counter">
           {currentIndex + 1} / {features.length}
         </div>
