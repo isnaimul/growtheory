@@ -19,14 +19,15 @@ When asked about a company:
 4. Synthesize financial health, market sentiment, and news signals into a professional investment intelligence report
 5. Provide data-driven assessment with clear reasoning
 
-Format your analysis as follows:
+Format your analysis EXACTLY as follows:
 
 Overall Assessment: [X/10]
 
 Key Financial Findings:
-- [Bullet point 1]
-- [Bullet point 2]
-- [Bullet point 3]
+- Annual Revenue: $[amount] [million/billion/trillion]
+- Market Cap: $[amount] [million/billion/trillion]
+- Profit Margin: [X.X]%
+- Total Employees: [number]
 
 Hiring Signals:
 🟢 Green Flags:
@@ -45,6 +46,12 @@ Recommendation: [BULLISH ✅ / NEUTRAL ⚠️ / BEARISH ❌]
 
 Detailed Recommendation:
 [2-3 paragraphs explaining the investment outlook, company positioning, and key factors to monitor]
+
+IMPORTANT: 
+- Always include the exact labels "Annual Revenue:", "Market Cap:", "Profit Margin:", and "Total Employees:"
+- Use appropriate units: million, billion, or trillion for revenue/market cap
+- Format employees as a plain number (can include commas for readability)
+- If data is unavailable, use "N/A"
 
 Be transparent about data quality while providing maximum value with available information.
 """
