@@ -43,58 +43,41 @@ const ReportPage = () => {
     }
   };
 
-  const parseAnalysis = (data) => {
-    const analysis = data.full_analysis || '';
-    
-    // Extract green flags
-    const greenFlagsMatch = analysis.match(/🟢 Green Flags:([\s\S]*?)(?=🔴|Market Sentiment|Recommendation|$)/);
-    const greenFlags = greenFlagsMatch 
-      ? greenFlagsMatch[1].split('\n').filter(line => line.trim().startsWith('-')).map(line => line.trim().substring(1).trim())
-      : [];
-    
-    // Extract red flags
-    const redFlagsMatch = analysis.match(/🔴 Potential Considerations:([\s\S]*?)(?=Market Sentiment|Recommendation|$)/);
-    const redFlags = redFlagsMatch
-      ? redFlagsMatch[1].split('\n').filter(line => line.trim().startsWith('-')).map(line => line.trim().substring(1).trim())
-      : [];
-    
-    // Extract recommendation
-    const recommendationMatch = analysis.match(/Recommendation:\s*(.*)/);
-    const recommendation = recommendationMatch ? recommendationMatch[1].trim() : 'NEUTRAL ⚠️';
-    
-    // Extract financial data (from the full_analysis text)
-    const revenueMatch = analysis.match(/revenue of \$?([\d.]+)\s*(billion|trillion|B|T)/i);
-    const marketCapMatch = analysis.match(/market cap(?:italization)? of \$?([\d.]+)\s*(billion|trillion|B|T)/i);
-    const profitMarginMatch = analysis.match(/profit margin of ([\d.]+)%/i);
-    const employeesMatch = analysis.match(/([\d,]+)\s*employees/i);
-    
-    const parseFinancialNumber = (match) => {
-      if (!match) return null;
-      const num = parseFloat(match[1].replace(/,/g, ''));
-      const unit = match[2].toUpperCase();
-      if (unit.startsWith('T')) return num * 1e12;
-      if (unit.startsWith('B')) return num * 1e9;
-      return num;
-    };
-    
-    return {
-      company: data.company,
-      ticker: data.ticker,
-      score: data.score,
-      grade: data.grade,
-      timestamp: data.timestamp,
-      recommendation: recommendation,
-      greenFlags: greenFlags,
-      redFlags: redFlags,
-      financialData: {
-        revenue: revenueMatch ? parseFinancialNumber(revenueMatch) : null,
-        market_cap: marketCapMatch ? parseFinancialNumber(marketCapMatch) : null,
-        profit_margin: profitMarginMatch ? parseFloat(profitMarginMatch[1]) : null,
-        employees: employeesMatch ? parseInt(employeesMatch[1].replace(/,/g, '')) : null
-      },
-      detailedAnalysis: analysis
-    };
+const parseAnalysis = (data) => {
+  // Use financialData from API if available (new structured format)
+  const financialData = data.financialData || null;
+  
+  const analysis = data.detailedAnalysis || data.full_analysis || '';
+  
+  // Extract green flags - looking for "🟢 Why Join:" section
+  const greenMatch = analysis.match(/🟢\s*Why Join:([\s\S]*?)(?=🔴|Work Environment|Career Outlook|Recommendation|$)/i);
+  const greenFlags = greenMatch 
+    ? greenMatch[1].split('\n').filter(l => l.trim().startsWith('-')).map(l => l.replace(/^-\s*/, '').trim())
+    : [];
+  
+  // Extract red flags - looking for "🔴 Considerations:" section
+  const redMatch = analysis.match(/🔴\s*Considerations:([\s\S]*?)(?=Work Environment|Career Outlook|Recommendation|$)/i);
+  const redFlags = redMatch
+    ? redMatch[1].split('\n').filter(l => l.trim().startsWith('-')).map(l => l.replace(/^-\s*/, '').trim())
+    : [];
+  
+  // Extract recommendation/verdict
+  const verdictMatch = analysis.match(/Recommendation:\s*(.+?)(?:\n|$)/i);
+  const verdict = verdictMatch ? verdictMatch[1].trim() : 'MODERATE';
+  
+  return {
+    company: data.company,
+    ticker: data.ticker || data.display_ticker,
+    score: data.score,
+    grade: data.grade,
+    timestamp: data.timestamp,
+    recommendation: verdict,
+    greenFlags: greenFlags.length > 0 ? greenFlags : ['Strong market position', 'Growth potential'],
+    redFlags: redFlags.length > 0 ? redFlags : ['Market volatility', 'Competition'],
+    financialData: financialData,
+    detailedAnalysis: analysis
   };
+};
 
   if (loading) {
     return (
