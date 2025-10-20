@@ -31,10 +31,14 @@ const CompanySearch = ({ onSelect }) => {
   }, [input]);
 
   const handleSelect = (ticker, name) => {
-    setInput(`${name} (${ticker})`);
-    setShowDropdown(false);
-    onSelect(ticker, name);
-  };
+  console.log('=== CompanySearch.handleSelect ===');
+  console.log('Ticker:', ticker);
+  console.log('Name:', name);
+  
+  setInput(`${name} (${ticker})`);
+  setShowDropdown(false);
+  onSelect(ticker, name);
+};
 
   const handleKeyDown = (e) => {
     if (!showDropdown) return;

@@ -11,21 +11,27 @@ const Hero = () => {
   const { setIsLoading } = useReport();
 
   const handleCompanySelect = async (ticker, name) => {
-    setIsLoading(true);
+  console.log('=== Hero.handleCompanySelect ===');
+  console.log('Received ticker:', ticker);
+  console.log('Received name:', name);
+  
+  setIsLoading(true);
 
-    try {
-      // Call API with ticker directly
-      const result = await apiService.analyzeCompany(ticker);
-      
-      // Navigate to report page
-      navigate(`/report?ticker=${result.ticker}`);
-    } catch (error) {
-      alert('Error analyzing company. Please try again.');
-      console.error('Analysis error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  try {
+    console.log('Calling apiService.analyzeCompany with:', name, ticker);
+    const result = await apiService.analyzeCompany(name, ticker);
+    console.log('API result:', result);
+    
+    navigate(`/report?ticker=${result.ticker}`);
+  } catch (error) {
+    console.log('=== ERROR CAUGHT ===');
+    console.error('Full error object:', error);
+    console.error('Error message:', error.message);
+    alert('Error analyzing company. Please try again.');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <section className="hero">
