@@ -2,7 +2,7 @@
   padding: 100px 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;  /* Change from overflow: hidden to visible */
   background: #000;
 }
 
@@ -73,7 +73,8 @@
   gap: 10px;
   animation: fadeInUp 0.8s ease-out 0.4s backwards;
   position: relative;
-  z-index: 1;
+  z-index: 1000;  /* Increase from z-index: 1 to 1000 */
+  overflow: visible;
 }
 
 .search-input-wrapper {
@@ -166,7 +167,8 @@
   font-size: 0.9em;
   animation: fadeInUp 0.8s ease-out 0.6s backwards;
   position: relative;
-  z-index: 1;
+  z-index: 0;
+  margin-top: 30px;
 }
 
 @media (max-width: 768px) {
@@ -193,9 +195,9 @@
   backdrop-filter: blur(10px);
   border: 1px solid #333;
   border-radius: 8px;
-  max-height: 400px;
+  max-height: 400px;  /* Keep this - allows scrolling if needed */
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 9999;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
