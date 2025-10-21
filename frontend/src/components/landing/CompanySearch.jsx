@@ -18,18 +18,18 @@ const CompanySearch = ({ onSelect }) => {
 
     const query = input.toLowerCase();
     const matches = Object.entries(companies)
-      .filter(([ticker, aliases]) => {
-        // Check if ticker matches
-        if (ticker.toLowerCase().includes(query)) return true;
-
-        // Check if any alias matches
-        return aliases.some((alias) => alias.toLowerCase().includes(query));
-      })
-      .slice(0, 10)
-      .map(([ticker, aliases]) => ({
-        ticker,
-        name: aliases[0], // Use first alias as display name
-      }));
+  .filter(([ticker, data]) => {
+    const { default: defaultName, aliases } = data;
+    const allTerms = [ticker, defaultName, ...aliases].map((s) =>
+      s.toLowerCase()
+    );
+    return allTerms.some((term) => term.includes(query));
+  })
+  .slice(0, 10)
+  .map(([ticker, data]) => ({
+    ticker,
+    name: data.default, // show official company name
+  }));
 
     setSuggestions(matches);
     setShowDropdown(matches.length > 0);
