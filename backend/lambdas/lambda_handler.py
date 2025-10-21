@@ -9,6 +9,11 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from agents.company_analyst import company_agent
 
+# Lambda memory cache (persists across invocations)
+DASHBOARD_CACHE = None
+CACHE_TIMESTAMP = None
+CACHE_DURATION_SECONDS = 300  # 5 minutes
+
 TABLE_NAME = os.environ.get("COMPANY_CACHE_TABLE_NAME")
 
 if not TABLE_NAME:
@@ -88,16 +93,34 @@ def handle_analyze(event, context):
 def handle_dashboard(event, context):
     """GET /dashboard?page=1 - Return paginated cached companies"""
     
+    global DASHBOARD_CACHE, CACHE_TIMESTAMP
+    
     try:
-        # Get page number from query params (default to 1)
+        # Get page number from query params
         params = event.get('queryStringParameters', {}) or {}
         page = int(params.get('page', 1))
         per_page = 6
         
-        print(f"Fetching dashboard data - page {page}")
-
-        response = cache_table.scan()
-        all_companies = response.get('Items', [])
+        # Check Lambda memory cache
+        now = datetime.now()
+        if DASHBOARD_CACHE and CACHE_TIMESTAMP:
+            age = (now - CACHE_TIMESTAMP).total_seconds()
+            if age < CACHE_DURATION_SECONDS:
+                print(f"✓ Lambda cache HIT - {age:.1f}s old")
+                all_companies = DASHBOARD_CACHE
+            else:
+                print(f"✗ Lambda cache EXPIRED - {age:.1f}s old")
+                DASHBOARD_CACHE = None
+        
+        # Cache miss or expired - fetch from DynamoDB
+        if not DASHBOARD_CACHE:
+            print(f"Fetching from DynamoDB...")
+            response = cache_table.scan()
+            all_companies = response.get('Items', [])
+            
+            # Store in Lambda cache
+            DASHBOARD_CACHE = all_companies
+            CACHE_TIMESTAMP = now
         
         # Convert and sort
         companies = []
