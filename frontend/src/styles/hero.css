@@ -158,8 +158,19 @@
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
 }
 
-.analyze-button:active {
-  transform: translateY(0);
+.analyze-button.active {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.analyze-button.active:hover {
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+}
+
+.analyze-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #4a4d9e 0%, #6b4fa0 100%);
 }
 
 .helper-text {
