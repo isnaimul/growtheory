@@ -1,376 +1,1815 @@
 {
-  "A": ["Agilent Technologies", "Agilent Technologies Inc."],
-  "AAL": ["American Airlines", "American Airlines Group"],
-  "AAPL": ["Apple", "Apple Inc.", "Mac", "MacBook", "iPad", "iPhone"],
-  "ABBV": ["AbbVie", "AbbVie Inc.", "Humira"],
-  "ABC": ["AmerisourceBergen", "AmerisourceBergen Corporation"],
-  "ABNB": ["Airbnb", "Airbnb, Inc."],
-  "ABT": ["Abbott", "Abbott Laboratories"],
-  "ACN": ["Accenture", "Accenture plc"],
-  "ADBE": ["Acrobat", "Adobe", "Adobe Inc.", "Illustrator", "PDF", "Photoshop"],
-  "ADDYY": ["Addidas", "Adidas AG"],
-  "ADI": ["Analog Devices", "Analog Devices, Inc."],
-  "ADP": ["Automatic Data Processing Inc."],
-  "AEE": ["Ameren", "Ameren Corporation"],
-  "AEP": ["American Electric Power", "American Electric Power Company"],
-  "AES": ["AES", "AES Corp.", "AES Corporation"],
-  "AFL": ["AFLAC", "Aflac"],
-  "AGN": ["Align Technology"],
-  "AIG": ["AIG", "American International Group"],
-  "AIV": ["AIV", "APLE", "Apartment Income REIT"],
-  "AKAM": ["Akamai Technologies"],
-  "ALB": ["Albemarle", "Albemarle Corporation"],
-  "ALGN": ["Align Technology", "AlignTech"],
-  "ALK": ["Alaska Air Group", "Alaska Airlines", "Horizon Air"],
-  "ALLE": ["Allegion", "Allegion plc"],
-  "ALXN": ["Alexion", "Alexion Pharmaceuticals"],
-  "AMCR": ["Amcor", "Amcor Inc.", "Amcor plc"],
-  "AMD": ["AMD", "Advanced Micro Devices", "Radeon", "Ryzen"],
-  "AME": ["Ametek", "Ametek, Inc."],
-  "AMGN": ["Amgen", "Amgen Inc.", "Enbrel", "Neulasta"],
-  "AMP": ["Ameriprise", "Ameriprise Financial"],
-  "AMT": ["American Tower", "American Tower Corporation"],
-  "AMZN": ["Alexa", "Amazon", "Amazon.com, Inc.", "Kindle", "Prime"],
-  "ANF": ["Abercrombie", "Abercrombie & Fitch"],
-  "ANSS": ["ANSYS", "ANSYS, Inc."],
-  "ANTM": ["Anthem", "Anthem, Inc."],
-  "AON": ["Aon", "Aon plc"],
-  "AOS": ["A. O. Smith"],
-  "APA": ["Apache Corporation", "Apache Oil"],
-  "APD": ["Air Products", "Air Products and Chemicals"],
-  "APH": ["Amphenol", "Amphenol Corporation"],
-  "ARE": ["AvalonBay", "AvalonBay Communities"],
-  "ATVI": ["Activision", "Activision Blizzard"],
-  "AVB": ["AvalonBay", "AvalonBay Communities"],
-  "AVGO": ["Broadcom", "Broadcom Inc."],
-  "AVY": ["Avery Dennison", "Avery Dennison Corporation"],
-  "AXP": ["American Express", "American Express Company", "Amex"],
-  "AZO": ["AutoZone", "AutoZone, Inc."],
-  "BA": ["Boeing", "Boeing Company"],
-  "BAC": ["Bank of America", "Bank of America Corporation"],
-  "BAX": ["Baxter", "Baxter International"],
-  "BBWI": ["Bath & Body Works", "Bath & Body Works, Inc."],
-  "BBY": ["Best Buy", "Best Buy Co., Inc."],
-  "BDX": ["BD", "BDX Corporation", "Becton Dickinson"],
-  "BIIB": ["Avonex", "Biogen", "Biogen Inc."],
-  "BIO": ["Bio-Rad", "Bio-Rad Laboratories", "Bio-Rad Labs"],
-  "BK": ["BNY", "BNY Mellon", "Bank of New York Mellon"],
-  "BKNG": ["Booking Holdings Inc."],
-  "BKR": ["BKR", "Baker Hughes"],
-  "BLK": ["BlackRock", "BlackRock, Inc."],
-  "BLL": ["Ball", "Ball Corporation", "Ball Glass"],
-  "BMY": ["Bristol-Myers", "Bristol-Myers Squibb"],
-  "BRK.B": ["Berkshire Hathaway", "Berkshire Hathaway Inc."],
-  "C": ["Citigroup", "Citigroup Inc."],
-  "CAG": ["Conagra Brands", "Conagra Brands, Inc."],
-  "CAH": ["Cardinal Health", "Cardinal Health Inc."],
-  "CAT": ["Caterpillar", "Caterpillar Inc."],
-  "CB": ["Chubb Limited"],
-  "CBRE": ["CBRE", "CBRE Group"],
-  "CCI": ["Crown Castle", "Crown Castle Inc"],
-  "CCL": ["Carnival", "Carnival Corporation"],
-  "CELG": ["Celgene", "Celgene Corporation"],
-  "CF": ["CF Industries", "CF Industries Holdings"],
-  "CHD": ["Church & Dwight", "Church & Dwight Co."],
-  "CI": ["Cigna", "Cigna Group"],
-  "CL": ["Colgate", "Colgate-Palmolive"],
-  "CLX": ["Clorox", "The Clorox Company"],
-  "CMCSA": ["Comcast Corporation"],
-  "CME": ["CME", "CME Group"],
-  "CMS": ["CMS Energy", "CMS Energy Corp"],
-  "CNC": ["Centene", "Centene Corporation"],
-  "COF": ["Capital One", "Capital One Financial Corporation"],
-  "COP": ["ConocoPhillips", "ConocoPhillips Inc."],
-  "COST": ["Costco", "Costco Wholesale", "Costco Wholesale Corporation"],
-  "COTY": ["Coty", "Coty Inc."],
-  "CP": ["Canadian Pacific", "Canadian Pacific Railway"],
-  "CPB": ["Campbell Soup", "Campbell Soup Company"],
-  "CRL": ["CRL", "Charles River Laboratories"],
-  "CRM": ["Salesforce", "Salesforce, Inc."],
-  "CRWD": ["CrowdStrike", "CrowdStrike Holdings"],
-  "CSCO": ["Cisco Systems Inc."],
-  "CSX": ["CSX", "CSX Corporation"],
-  "CVS": ["CVS Health", "CVS Health Corporation", "CVS Pharmacy"],
-  "CVX": ["Chevron", "Chevron Corporation", "Texaco"],
-  "D": ["Dominion Energy", "Dominion Energy, Inc."],
-  "DAL": ["Delta Air Lines", "Delta Air Lines, Inc."],
-  "DD": ["DuPont", "DuPont de Nemours"],
-  "DE": ["Deere & Company"],
-  "DFS": ["Discover", "Discover Financial Services"],
-  "DG": ["Dollar General", "Dollar General Corporation"],
-  "DGX": ["Quest Diagnostics", "Quest Diagnostics Inc."],
-  "DHR": ["Danaher", "Danaher Corporation"],
-  "DIS": [
-    "Disney",
-    "ESPN",
-    "Marvel",
-    "Pixar",
-    "Star Wars",
-    "The Walt Disney Company"
-  ],
-  "DLTR": ["Dollar Tree", "Dollar Tree, Inc."],
-  "DPZ": ["Domino's", "Domino's Pizza, Inc."],
-  "DTE": ["DTE Energy", "DTE Energy Company"],
-  "DUK": ["Duke Energy", "Duke Energy Corporation"],
-  "EA": [
-    "Battlefield",
-    "Electronic Arts",
-    "Electronic Arts Inc.",
-    "FIFA",
-    "The Sims"
-  ],
-  "EBAY": ["eBay", "eBay Inc."],
-  "EIX": ["Edison Int", "Edison International"],
-  "EL": [
-    "Clinique",
-    "Est\u00e9e Lauder",
-    "Est\u00e9e Lauder Companies",
-    "MAC Cosmetics",
-    "Origins",
-    "The Est\u00e9e Lauder Companies Inc."
-  ],
-  "ELV": ["Elevance Health", "Elevance Health Inc."],
-  "EMR": ["Emerson Electric Co."],
-  "EOG": ["EOG Resources", "EOG Resources, Inc."],
-  "EQIX": ["Equinix", "Equinix, Inc."],
-  "EQR": ["Equity Residential", "Equity Residential REIT"],
-  "ESS": ["Essex Properties", "Essex Property Trust"],
-  "F": ["F-150", "Ford", "Ford Motor Company", "Mustang"],
-  "FANG": ["Diamondback Energy", "Diamondback Energy, Inc."],
-  "FB": ["Facebook", "Instagram", "Meta Platforms, Inc.", "Oculus", "WhatsApp"],
-  "FCX": ["Freeport-McMoRan", "Freeport-McMoRan Inc."],
-  "FDX": ["FedEx", "FedEx Corporation"],
-  "FICO": ["FICO", "Fair Isaac"],
-  "FITB": ["Fifth Third", "Fifth Third Bank"],
-  "FMC": ["FMC", "FMC Corporation"],
-  "FRC": ["First Republic", "First Republic Bank"],
-  "FSLY": ["Fastly", "Fastly, Inc."],
-  "GD": ["General Dynamics", "General Dynamics Corporation"],
-  "GE": ["General Electric Company"],
-  "GILD": ["Gilead", "Gilead Sciences"],
-  "GIS": ["General Mills", "General Mills, Inc."],
-  "GM": ["Chevrolet", "GMC", "General Motors", "General Motors Company"],
-  "GNRC": ["Generac", "Generac Holdings Inc."],
-  "GOOG": [
-    "Alphabet Inc.",
-    "Alphabet Inc. (Class C)",
-    "Android",
-    "Gmail",
-    "Google",
-    "YouTube"
-  ],
-  "GOOGL": [
-    "Alphabet Inc.",
-    "Alphabet Inc. (Class A)",
-    "Android",
-    "Gmail",
-    "Google",
-    "YouTube"
-  ],
-  "GPS": ["Gap", "Gap, Inc."],
-  "GS": ["Goldman Sachs", "Goldman Sachs Group"],
-  "HAL": ["Halliburton", "Halliburton Company"],
-  "HCA": ["HCA Healthcare", "HCA Inc."],
-  "HD": ["Home Depot", "The Home Depot, Inc."],
-  "HLT": ["Hilton", "Hilton Worldwide", "Hilton Worldwide Holdings Inc."],
-  "HON": ["Honeywell International Inc."],
-  "HPQ": ["HP Inc.", "Hewlett-Packard"],
-  "HRL": ["Hormel", "Hormel Foods"],
-  "HST": ["Host Hotels", "Host Hotels & Resorts"],
-  "HSY": ["Hershey", "Hershey Company"],
-  "HUM": ["Humana", "Humana Inc."],
-  "IBM": ["Big Blue", "IBM", "International Business Machines"],
-  "ICE": ["ICE", "Intercontinental Exchange"],
-  "INTC": ["Core", "Intel", "Intel Corporation", "Pentium", "Xeon"],
-  "INTU": ["Intuit", "Intuit Inc.", "QuickBooks", "TurboTax"],
-  "IR": ["Ingersoll Rand", "Ingersoll Rand Inc."],
-  "ISRG": ["Intuitive Surgical Inc."],
-  "ITW": ["Illinois Tool Works Inc."],
-  "JBLU": ["JetBlue Airways", "JetBlue Airways Corp"],
-  "JNJ": ["Band-Aid", "J&J", "Johnson & Johnson", "Tylenol"],
-  "JPM": ["Chase", "JPMorgan", "JPMorgan Chase", "JPMorgan Chase & Co."],
-  "JWN": ["Nordstrom", "Nordstrom, Inc."],
-  "K": ["Kellogg", "Kellogg Company"],
-  "KD": ["Kinder Morgan", "Kinder Morgan, Inc."],
-  "KEY": ["KeyBank", "KeyCorp"],
-  "KHC": ["Heinz", "Kraft", "Kraft Heinz", "The Kraft Heinz Company"],
-  "KMB": ["Kimberly-Clark", "Kimberly-Clark Corporation"],
-  "KMI": ["Kinder Morgan", "Kinder Morgan, Inc."],
-  "KO": [
-    "Coca-Cola",
-    "Coca-Cola Company",
-    "Coke",
-    "Sprite",
-    "The Coca-Cola Company"
-  ],
-  "KR": ["Fred Meyer", "Kroger", "Kroger Co."],
-  "KRFT": ["Kraft", "Kraft Foods"],
-  "KSU": ["KCS", "Kansas City Southern"],
-  "LB": ["L Brands", "L Brands, Inc."],
-  "LH": ["Labcorp", "Laboratory Corporation of America"],
-  "LHX": ["L3Harris", "L3Harris Technologies"],
-  "LIN": ["Linde", "Linde plc"],
-  "LLY": ["Lilly", "Lilly (Eli)", "Lilly Inc."],
-  "LMT": ["Lockheed Martin", "Lockheed Martin Corporation"],
-  "LNT": ["Alliant Energy", "Alliant Energy Corp."],
-  "LOW": ["Lowe's", "Lowe's Companies"],
-  "LUV": ["Southwest Airlines", "Southwest Airlines Co."],
-  "M": ["Macy's", "Macy's, Inc."],
-  "MA": ["Mastercard", "Mastercard Incorporated"],
-  "MAR": ["Marriott", "Marriott International", "Marriott International, Inc."],
-  "MCD": ["Big Mac", "McDonald's", "McDonald's Corporation"],
-  "MCK": ["McKesson", "McKesson Corporation"],
-  "MDLZ": ["Mondelez", "Mondelez International"],
-  "MDT": ["Medtronic", "Medtronic PLC"],
-  "META": ["Facebook", "Instagram", "Meta", "Meta Platforms Inc.", "WhatsApp"],
-  "MGM": ["MGM Resorts", "MGM Resorts International"],
-  "MKC": ["McCormick", "McCormick & Company"],
-  "MMC": ["Marsh & McLennan Companies Inc."],
-  "MMM": ["3M", "3M Company"],
-  "MO": ["Altria", "Altria Group, Inc.", "Marlboro"],
-  "MPC": ["Marathon Petroleum", "Marathon Petroleum Corp"],
-  "MRK": ["Merck", "Merck & Co.", "Merck & Co., Inc."],
-  "MS": ["Morgan Stanley", "Morgan Stanley & Co."],
-  "MSCI": ["MSCI", "MSCI Inc."],
-  "MSFT": [
-    "Azure",
-    "Microsoft",
-    "Microsoft Corporation",
-    "Office",
-    "Surface",
-    "Windows",
-    "Xbox"
-  ],
-  "MTB": ["M&T Bank", "M&T Bank Corporation"],
-  "MTCH": [
-    "Match Group",
-    "Match Group, Inc.",
-    "Match.com",
-    "OkCupid",
-    "Tinder"
-  ],
-  "NCLH": ["Norwegian Cruise Line", "Norwegian Cruise Line Holdings"],
-  "NDAQ": ["Nasdaq", "Nasdaq, Inc."],
-  "NEE": ["NextEra Energy", "NextEra Energy, Inc."],
-  "NEM": ["Newmont", "Newmont Corporation"],
-  "NFLX": ["Netflix", "Netflix, Inc."],
-  "NKE": ["Jordan", "Nike", "Nike, Inc."],
-  "NOC": ["Northrop Grumman", "Northrop Grumman Corporation"],
-  "NSC": ["Norfolk Southern", "Norfolk Southern Corporation"],
-  "NUE": ["Nucor", "Nucor Corporation"],
-  "NVAX": ["Novavax", "Novavax, Inc."],
-  "NVDA": ["GeForce", "NVIDIA Corporation", "Nvidia", "RTX"],
-  "O": ["Realty Income", "Realty Income Corporation"],
-  "ORCL": ["Java", "MySQL", "Oracle", "Oracle Corporation"],
-  "PAE": ["PAE", "PAE Incorporated"],
-  "PCAR": ["PACCAR", "PACCAR Inc."],
-  "PCG": ["PG&E", "PG&E Corporation"],
-  "PEP": ["Doritos", "Gatorade", "Lays", "Pepsi", "PepsiCo", "PepsiCo, Inc."],
-  "PFE": ["Lipitor", "Pfizer", "Pfizer Inc.", "Viagra"],
-  "PG": ["Gillette", "P&G", "Pampers", "Procter & Gamble"],
-  "PKG": ["Packaging Corp", "Packaging Corporation of America"],
-  "PLD": ["Prologis", "Prologis Inc"],
-  "PM": ["Philip Morris International Inc."],
-  "PNC": ["PNC Financial", "PNC Financial Services"],
-  "PNW": ["Pinnacle West", "Pinnacle West Capital"],
-  "PPL": ["PPL", "PPL Corporation"],
-  "PSA": ["Public Storage", "Public Storage Inc."],
-  "PYPL": ["PayPal", "PayPal Holdings"],
-  "PZZA": ["Papa John's", "Papa John's International"],
-  "QCOM": ["QUALCOMM Incorporated"],
-  "QRVO": ["Qorvo", "Qorvo Inc."],
-  "RCL": ["Royal Caribbean", "Royal Caribbean Cruises"],
-  "REGN": ["Regeneron", "Regeneron Pharmaceuticals"],
-  "ROST": ["Ross", "Ross Stores"],
-  "RTN": ["RTX", "Raytheon", "Raytheon Technologies Corporation"],
-  "RTX": ["Raytheon", "Raytheon Technologies Corporation"],
-  "SAP": ["SAP", "SAP SE"],
-  "SBAC": ["SBA Communications", "SBA Communications Corporation"],
-  "SBUX": ["Starbucks", "Starbucks Corporation"],
-  "SCHW": ["Charles Schwab", "Schwab"],
-  "SEE": ["Sealed Air", "Sealed Air Corporation"],
-  "SHOP": ["Shopify", "Shopify, Inc."],
-  "SHW": ["Sherwin-Williams", "Sherwin-Williams Company"],
-  "SIVB": ["SVB Financial Group", "Silicon Valley Bank"],
-  "SKX": ["Skechers", "Skechers U.S.A."],
-  "SLB": ["Schlumberger", "Schlumberger Limited"],
-  "SLG": ["SL Green", "SL Green Realty"],
-  "SO": ["Southern Co.", "Southern Company"],
-  "SPG": ["Simon Property Group", "Simon Property Group, Inc."],
-  "SPGI": ["S&P Global", "Standard & Poor's"],
-  "SRE": ["Sempra", "Sempra Energy"],
-  "SVU": ["SuperValu", "SuperValu Inc."],
-  "SWKS": ["Skyworks", "Skyworks Solutions"],
-  "SYK": ["Stryker", "Stryker Corporation"],
-  "T": ["AT&T", "AT&T Inc."],
-  "TDG": ["TransDigm", "TransDigm Group"],
-  "TGT": ["Target", "Target Corporation"],
-  "TJX": ["TJX", "TJX Companies"],
-  "TM": ["Toyota", "Toyota Motor Corporation"],
-  "TMO": ["Thermo Fisher Scientific Inc."],
-  "TMP": ["Tesla Motors", "Tesla, Inc."],
-  "TMUS": ["T-Mobile US Inc."],
-  "TSLA": [
-    "Cybertruck",
-    "Model 3",
-    "Model S",
-    "Model X",
-    "Model Y",
-    "Tesla",
-    "Tesla, Inc."
-  ],
-  "TTWO": [
-    "Grand Theft Auto",
-    "NBA 2K",
-    "Take-Two Interactive",
-    "Take-Two Interactive Software, Inc."
-  ],
-  "TXN": ["Texas Instruments Incorporated"],
-  "UAL": ["United Airlines", "United Airlines Holdings"],
-  "UDR": ["UDR", "UDR Company", "UDR, Inc."],
-  "UHS": ["Universal Health Services", "Universal Health Services, Inc."],
-  "UNG": ["UNG", "United States Natural Gas Fund"],
-  "UNH": [
-    "Optum",
-    "UnitedHealth",
-    "UnitedHealth Group",
-    "UnitedHealth Group Inc.",
-    "UnitedHealthcare"
-  ],
-  "UNP": ["Union Pacific", "Union Pacific Railroad"],
-  "UPS": ["UPS", "United Parcel Service", "United Parcel Service, Inc."],
-  "USB": ["U.S. Bancorp", "US Bancorp"],
-  "V": ["Visa", "Visa Inc."],
-  "VFC": ["VFC", "Vans"],
-  "VNO": ["Vornado", "Vornado Realty Trust"],
-  "VRTX": ["Vertex", "Vertex Pharmaceuticals"],
-  "VTR": ["Ventas", "Ventas, Inc."],
-  "VZ": ["Verizon Communications Inc."],
-  "WBA": [
-    "Boots",
-    "Walgreens",
-    "Walgreens Boots Alliance",
-    "Walgreens Boots Alliance, Inc."
-  ],
-  "WEN": ["Wendy's", "Wendy's Company"],
-  "WFC": ["Wells Fargo", "Wells Fargo & Company"],
-  "WING": ["Wingstop", "Wingstop Inc."],
-  "WM": ["Waste Management Inc."],
-  "WMT": ["Sam's Club", "Walmart", "Walmart Inc."],
-  "WY": ["Weyerhaeuser", "Weyerhaeuser Company"],
-  "WYNN": ["Wynn", "Wynn Resorts"],
-  "XLE": ["Energy Select Sector", "XLE"],
-  "XOM": ["Esso", "Exxon", "ExxonMobil", "ExxonMobil Corporation"],
-  "XRAY": ["DENTSPLY SIRONA", "Dentsply Sirona, Inc."],
-  "YETI": ["YETI", "YETI Holdings"],
-  "YUM": [
-    "KFC",
-    "Pizza Hut",
-    "Taco Bell",
-    "Yum Brands",
-    "Yum! Brands",
-    "Yum! Brands, Inc."
-  ],
-  "ZNGA": ["Zynga", "Zynga Inc."],
-  "ZTS": ["Zoetis", "Zoetis Inc."]
+  "A": {
+    "default": "Agilent Technologies Inc.",
+    "aliases": [
+      "Agilent Technologies"
+    ]
+  },
+  "AAL": {
+    "default": "American Airlines Group",
+    "aliases": [
+      "American Airlines"
+    ]
+  },
+  "AAPL": {
+    "default": "Apple Inc.",
+    "aliases": [
+      "Apple",
+      "Mac",
+      "MacBook",
+      "iPad",
+      "iPhone"
+    ]
+  },
+  "ABBV": {
+    "default": "AbbVie Inc.",
+    "aliases": [
+      "AbbVie",
+      "Humira"
+    ]
+  },
+  "ABC": {
+    "default": "AmerisourceBergen Corporation",
+    "aliases": [
+      "AmerisourceBergen"
+    ]
+  },
+  "ABNB": {
+    "default": "Airbnb, Inc.",
+    "aliases": [
+      "Airbnb"
+    ]
+  },
+  "ABT": {
+    "default": "Abbott",
+    "aliases": [
+      "Abbott Laboratories"
+    ]
+  },
+  "ACN": {
+    "default": "Accenture plc",
+    "aliases": [
+      "Accenture"
+    ]
+  },
+  "ADBE": {
+    "default": "Adobe Inc.",
+    "aliases": [
+      "Acrobat",
+      "Adobe",
+      "Illustrator",
+      "PDF",
+      "Photoshop"
+    ]
+  },
+  "ADDYY": {
+    "default": "Addidas",
+    "aliases": [
+      "Adidas AG"
+    ]
+  },
+  "ADI": {
+    "default": "Analog Devices, Inc.",
+    "aliases": [
+      "Analog Devices"
+    ]
+  },
+  "ADP": {
+    "default": "Automatic Data Processing Inc.",
+    "aliases": []
+  },
+  "AEE": {
+    "default": "Ameren Corporation",
+    "aliases": [
+      "Ameren"
+    ]
+  },
+  "AEP": {
+    "default": "American Electric Power Company",
+    "aliases": [
+      "American Electric Power"
+    ]
+  },
+  "AES": {
+    "default": "AES Corp.",
+    "aliases": [
+      "AES",
+      "AES Corporation"
+    ]
+  },
+  "AFL": {
+    "default": "AFLAC",
+    "aliases": [
+      "Aflac"
+    ]
+  },
+  "AGN": {
+    "default": "Align Technology",
+    "aliases": []
+  },
+  "AIG": {
+    "default": "American International Group",
+    "aliases": [
+      "AIG"
+    ]
+  },
+  "AIV": {
+    "default": "Apartment Income REIT",
+    "aliases": [
+      "AIV",
+      "APLE"
+    ]
+  },
+  "AKAM": {
+    "default": "Akamai Technologies",
+    "aliases": []
+  },
+  "ALB": {
+    "default": "Albemarle Corporation",
+    "aliases": [
+      "Albemarle"
+    ]
+  },
+  "ALGN": {
+    "default": "Align Technology",
+    "aliases": [
+      "AlignTech"
+    ]
+  },
+  "ALK": {
+    "default": "Alaska Air Group",
+    "aliases": [
+      "Alaska Airlines",
+      "Horizon Air"
+    ]
+  },
+  "ALLE": {
+    "default": "Allegion plc",
+    "aliases": [
+      "Allegion"
+    ]
+  },
+  "ALXN": {
+    "default": "Alexion",
+    "aliases": [
+      "Alexion Pharmaceuticals"
+    ]
+  },
+  "AMCR": {
+    "default": "Amcor Inc.",
+    "aliases": [
+      "Amcor",
+      "Amcor plc"
+    ]
+  },
+  "AMD": {
+    "default": "AMD",
+    "aliases": [
+      "Advanced Micro Devices",
+      "Radeon",
+      "Ryzen"
+    ]
+  },
+  "AME": {
+    "default": "Ametek, Inc.",
+    "aliases": [
+      "Ametek"
+    ]
+  },
+  "AMGN": {
+    "default": "Amgen Inc.",
+    "aliases": [
+      "Amgen",
+      "Enbrel",
+      "Neulasta"
+    ]
+  },
+  "AMP": {
+    "default": "Ameriprise",
+    "aliases": [
+      "Ameriprise Financial"
+    ]
+  },
+  "AMT": {
+    "default": "American Tower Corporation",
+    "aliases": [
+      "American Tower"
+    ]
+  },
+  "AMZN": {
+    "default": "Amazon.com, Inc.",
+    "aliases": [
+      "Alexa",
+      "Amazon",
+      "Kindle",
+      "Prime"
+    ]
+  },
+  "ANF": {
+    "default": "Abercrombie",
+    "aliases": [
+      "Abercrombie & Fitch"
+    ]
+  },
+  "ANSS": {
+    "default": "ANSYS, Inc.",
+    "aliases": [
+      "ANSYS"
+    ]
+  },
+  "ANTM": {
+    "default": "Anthem, Inc.",
+    "aliases": [
+      "Anthem"
+    ]
+  },
+  "AON": {
+    "default": "Aon plc",
+    "aliases": [
+      "Aon"
+    ]
+  },
+  "AOS": {
+    "default": "A. O. Smith",
+    "aliases": []
+  },
+  "APA": {
+    "default": "Apache Corporation",
+    "aliases": [
+      "Apache Oil"
+    ]
+  },
+  "APD": {
+    "default": "Air Products",
+    "aliases": [
+      "Air Products and Chemicals"
+    ]
+  },
+  "APH": {
+    "default": "Amphenol Corporation",
+    "aliases": [
+      "Amphenol"
+    ]
+  },
+  "ARE": {
+    "default": "AvalonBay",
+    "aliases": [
+      "AvalonBay Communities"
+    ]
+  },
+  "ATVI": {
+    "default": "Activision",
+    "aliases": [
+      "Activision Blizzard"
+    ]
+  },
+  "AVB": {
+    "default": "AvalonBay",
+    "aliases": [
+      "AvalonBay Communities"
+    ]
+  },
+  "AVGO": {
+    "default": "Broadcom Inc.",
+    "aliases": [
+      "Broadcom"
+    ]
+  },
+  "AVY": {
+    "default": "Avery Dennison Corporation",
+    "aliases": [
+      "Avery Dennison"
+    ]
+  },
+  "AXP": {
+    "default": "American Express Company",
+    "aliases": [
+      "American Express",
+      "Amex"
+    ]
+  },
+  "AZO": {
+    "default": "AutoZone, Inc.",
+    "aliases": [
+      "AutoZone"
+    ]
+  },
+  "BA": {
+    "default": "Boeing Company",
+    "aliases": [
+      "Boeing"
+    ]
+  },
+  "BAC": {
+    "default": "Bank of America Corporation",
+    "aliases": [
+      "Bank of America"
+    ]
+  },
+  "BAX": {
+    "default": "Baxter",
+    "aliases": [
+      "Baxter International"
+    ]
+  },
+  "BBWI": {
+    "default": "Bath & Body Works, Inc.",
+    "aliases": [
+      "Bath & Body Works"
+    ]
+  },
+  "BBY": {
+    "default": "Best Buy Co., Inc.",
+    "aliases": [
+      "Best Buy"
+    ]
+  },
+  "BDX": {
+    "default": "BDX Corporation",
+    "aliases": [
+      "BD",
+      "Becton Dickinson"
+    ]
+  },
+  "BIIB": {
+    "default": "Biogen Inc.",
+    "aliases": [
+      "Avonex",
+      "Biogen"
+    ]
+  },
+  "BIO": {
+    "default": "Bio-Rad",
+    "aliases": [
+      "Bio-Rad Laboratories",
+      "Bio-Rad Labs"
+    ]
+  },
+  "BK": {
+    "default": "BNY",
+    "aliases": [
+      "BNY Mellon",
+      "Bank of New York Mellon"
+    ]
+  },
+  "BKNG": {
+    "default": "Booking Holdings Inc.",
+    "aliases": []
+  },
+  "BKR": {
+    "default": "BKR",
+    "aliases": [
+      "Baker Hughes"
+    ]
+  },
+  "BLK": {
+    "default": "BlackRock, Inc.",
+    "aliases": [
+      "BlackRock"
+    ]
+  },
+  "BLL": {
+    "default": "Ball Corporation",
+    "aliases": [
+      "Ball",
+      "Ball Glass"
+    ]
+  },
+  "BMY": {
+    "default": "Bristol-Myers",
+    "aliases": [
+      "Bristol-Myers Squibb"
+    ]
+  },
+  "BRK.B": {
+    "default": "Berkshire Hathaway Inc.",
+    "aliases": [
+      "Berkshire Hathaway"
+    ]
+  },
+  "C": {
+    "default": "Citigroup",
+    "aliases": [
+      "Citigroup Inc."
+    ]
+  },
+  "CAG": {
+    "default": "Conagra Brands, Inc.",
+    "aliases": [
+      "Conagra Brands"
+    ]
+  },
+  "CAH": {
+    "default": "Cardinal Health Inc.",
+    "aliases": [
+      "Cardinal Health"
+    ]
+  },
+  "CAT": {
+    "default": "Caterpillar Inc.",
+    "aliases": [
+      "Caterpillar"
+    ]
+  },
+  "CB": {
+    "default": "Chubb Limited",
+    "aliases": []
+  },
+  "CBRE": {
+    "default": "CBRE Group",
+    "aliases": [
+      "CBRE"
+    ]
+  },
+  "CCI": {
+    "default": "Crown Castle Inc",
+    "aliases": [
+      "Crown Castle"
+    ]
+  },
+  "CCL": {
+    "default": "Carnival Corporation",
+    "aliases": [
+      "Carnival"
+    ]
+  },
+  "CELG": {
+    "default": "Celgene Corporation",
+    "aliases": [
+      "Celgene"
+    ]
+  },
+  "CF": {
+    "default": "CF Industries Holdings",
+    "aliases": [
+      "CF Industries"
+    ]
+  },
+  "CHD": {
+    "default": "Church & Dwight Co.",
+    "aliases": [
+      "Church & Dwight"
+    ]
+  },
+  "CI": {
+    "default": "Cigna Group",
+    "aliases": [
+      "Cigna"
+    ]
+  },
+  "CL": {
+    "default": "Colgate",
+    "aliases": [
+      "Colgate-Palmolive"
+    ]
+  },
+  "CLX": {
+    "default": "The Clorox Company",
+    "aliases": [
+      "Clorox"
+    ]
+  },
+  "CMCSA": {
+    "default": "Comcast Corporation",
+    "aliases": []
+  },
+  "CME": {
+    "default": "CME Group",
+    "aliases": [
+      "CME"
+    ]
+  },
+  "CMS": {
+    "default": "CMS Energy Corp",
+    "aliases": [
+      "CMS Energy"
+    ]
+  },
+  "CNC": {
+    "default": "Centene Corporation",
+    "aliases": [
+      "Centene"
+    ]
+  },
+  "COF": {
+    "default": "Capital One Financial Corporation",
+    "aliases": [
+      "Capital One"
+    ]
+  },
+  "COP": {
+    "default": "ConocoPhillips Inc.",
+    "aliases": [
+      "ConocoPhillips"
+    ]
+  },
+  "COST": {
+    "default": "Costco Wholesale Corporation",
+    "aliases": [
+      "Costco",
+      "Costco Wholesale"
+    ]
+  },
+  "COTY": {
+    "default": "Coty Inc.",
+    "aliases": [
+      "Coty"
+    ]
+  },
+  "CP": {
+    "default": "Canadian Pacific",
+    "aliases": [
+      "Canadian Pacific Railway"
+    ]
+  },
+  "CPB": {
+    "default": "Campbell Soup Company",
+    "aliases": [
+      "Campbell Soup"
+    ]
+  },
+  "CRL": {
+    "default": "CRL",
+    "aliases": [
+      "Charles River Laboratories"
+    ]
+  },
+  "CRM": {
+    "default": "Salesforce, Inc.",
+    "aliases": [
+      "Salesforce"
+    ]
+  },
+  "CRWD": {
+    "default": "CrowdStrike Holdings",
+    "aliases": [
+      "CrowdStrike"
+    ]
+  },
+  "CSCO": {
+    "default": "Cisco Systems Inc.",
+    "aliases": []
+  },
+  "CSX": {
+    "default": "CSX Corporation",
+    "aliases": [
+      "CSX"
+    ]
+  },
+  "CVS": {
+    "default": "CVS Health Corporation",
+    "aliases": [
+      "CVS Health",
+      "CVS Pharmacy"
+    ]
+  },
+  "CVX": {
+    "default": "Chevron Corporation",
+    "aliases": [
+      "Chevron",
+      "Texaco"
+    ]
+  },
+  "D": {
+    "default": "Dominion Energy, Inc.",
+    "aliases": [
+      "Dominion Energy"
+    ]
+  },
+  "DAL": {
+    "default": "Delta Air Lines, Inc.",
+    "aliases": [
+      "Delta Air Lines"
+    ]
+  },
+  "DD": {
+    "default": "DuPont",
+    "aliases": [
+      "DuPont de Nemours"
+    ]
+  },
+  "DE": {
+    "default": "Deere & Company",
+    "aliases": []
+  },
+  "DFS": {
+    "default": "Discover",
+    "aliases": [
+      "Discover Financial Services"
+    ]
+  },
+  "DG": {
+    "default": "Dollar General Corporation",
+    "aliases": [
+      "Dollar General"
+    ]
+  },
+  "DGX": {
+    "default": "Quest Diagnostics Inc.",
+    "aliases": [
+      "Quest Diagnostics"
+    ]
+  },
+  "DHR": {
+    "default": "Danaher Corporation",
+    "aliases": [
+      "Danaher"
+    ]
+  },
+  "DIS": {
+    "default": "The Walt Disney Company",
+    "aliases": [
+      "Disney",
+      "ESPN",
+      "Marvel",
+      "Pixar",
+      "Star Wars"
+    ]
+  },
+  "DLTR": {
+    "default": "Dollar Tree, Inc.",
+    "aliases": [
+      "Dollar Tree"
+    ]
+  },
+  "DPZ": {
+    "default": "Domino's Pizza, Inc.",
+    "aliases": [
+      "Domino's"
+    ]
+  },
+  "DTE": {
+    "default": "DTE Energy Company",
+    "aliases": [
+      "DTE Energy"
+    ]
+  },
+  "DUK": {
+    "default": "Duke Energy Corporation",
+    "aliases": [
+      "Duke Energy"
+    ]
+  },
+  "EA": {
+    "default": "Electronic Arts Inc.",
+    "aliases": [
+      "Battlefield",
+      "Electronic Arts",
+      "FIFA",
+      "The Sims"
+    ]
+  },
+  "EBAY": {
+    "default": "eBay Inc.",
+    "aliases": [
+      "eBay"
+    ]
+  },
+  "EIX": {
+    "default": "Edison Int",
+    "aliases": [
+      "Edison International"
+    ]
+  },
+  "EL": {
+    "default": "The Est\u00e9e Lauder Companies Inc.",
+    "aliases": [
+      "Clinique",
+      "Est\u00e9e Lauder",
+      "Est\u00e9e Lauder Companies",
+      "MAC Cosmetics",
+      "Origins"
+    ]
+  },
+  "ELV": {
+    "default": "Elevance Health Inc.",
+    "aliases": [
+      "Elevance Health"
+    ]
+  },
+  "EMR": {
+    "default": "Emerson Electric Co.",
+    "aliases": []
+  },
+  "EOG": {
+    "default": "EOG Resources, Inc.",
+    "aliases": [
+      "EOG Resources"
+    ]
+  },
+  "EQIX": {
+    "default": "Equinix, Inc.",
+    "aliases": [
+      "Equinix"
+    ]
+  },
+  "EQR": {
+    "default": "Equity Residential",
+    "aliases": [
+      "Equity Residential REIT"
+    ]
+  },
+  "ESS": {
+    "default": "Essex Properties",
+    "aliases": [
+      "Essex Property Trust"
+    ]
+  },
+  "F": {
+    "default": "Ford Motor Company",
+    "aliases": [
+      "F-150",
+      "Ford",
+      "Mustang"
+    ]
+  },
+  "FANG": {
+    "default": "Diamondback Energy, Inc.",
+    "aliases": [
+      "Diamondback Energy"
+    ]
+  },
+  "FB": {
+    "default": "Meta Platforms, Inc.",
+    "aliases": [
+      "Facebook",
+      "Instagram",
+      "Oculus",
+      "WhatsApp"
+    ]
+  },
+  "FCX": {
+    "default": "Freeport-McMoRan Inc.",
+    "aliases": [
+      "Freeport-McMoRan"
+    ]
+  },
+  "FDX": {
+    "default": "FedEx Corporation",
+    "aliases": [
+      "FedEx"
+    ]
+  },
+  "FICO": {
+    "default": "FICO",
+    "aliases": [
+      "Fair Isaac"
+    ]
+  },
+  "FITB": {
+    "default": "Fifth Third",
+    "aliases": [
+      "Fifth Third Bank"
+    ]
+  },
+  "FMC": {
+    "default": "FMC Corporation",
+    "aliases": [
+      "FMC"
+    ]
+  },
+  "FRC": {
+    "default": "First Republic",
+    "aliases": [
+      "First Republic Bank"
+    ]
+  },
+  "FSLY": {
+    "default": "Fastly, Inc.",
+    "aliases": [
+      "Fastly"
+    ]
+  },
+  "GD": {
+    "default": "General Dynamics Corporation",
+    "aliases": [
+      "General Dynamics"
+    ]
+  },
+  "GE": {
+    "default": "General Electric Company",
+    "aliases": []
+  },
+  "GILD": {
+    "default": "Gilead",
+    "aliases": [
+      "Gilead Sciences"
+    ]
+  },
+  "GIS": {
+    "default": "General Mills, Inc.",
+    "aliases": [
+      "General Mills"
+    ]
+  },
+  "GM": {
+    "default": "General Motors Company",
+    "aliases": [
+      "Chevrolet",
+      "GMC",
+      "General Motors"
+    ]
+  },
+  "GNRC": {
+    "default": "Generac Holdings Inc.",
+    "aliases": [
+      "Generac"
+    ]
+  },
+  "GOOG": {
+    "default": "Alphabet Inc.",
+    "aliases": [
+      "Alphabet Inc. (Class C)",
+      "Android",
+      "Gmail",
+      "Google",
+      "YouTube"
+    ]
+  },
+  "GOOGL": {
+    "default": "Alphabet Inc.",
+    "aliases": [
+      "Alphabet Inc. (Class A)",
+      "Android",
+      "Gmail",
+      "Google",
+      "YouTube"
+    ]
+  },
+  "GPS": {
+    "default": "Gap, Inc.",
+    "aliases": [
+      "Gap"
+    ]
+  },
+  "GS": {
+    "default": "Goldman Sachs Group",
+    "aliases": [
+      "Goldman Sachs"
+    ]
+  },
+  "HAL": {
+    "default": "Halliburton Company",
+    "aliases": [
+      "Halliburton"
+    ]
+  },
+  "HCA": {
+    "default": "HCA Inc.",
+    "aliases": [
+      "HCA Healthcare"
+    ]
+  },
+  "HD": {
+    "default": "The Home Depot, Inc.",
+    "aliases": [
+      "Home Depot"
+    ]
+  },
+  "HLT": {
+    "default": "Hilton Worldwide Holdings Inc.",
+    "aliases": [
+      "Hilton",
+      "Hilton Worldwide"
+    ]
+  },
+  "HON": {
+    "default": "Honeywell International Inc.",
+    "aliases": []
+  },
+  "HPQ": {
+    "default": "HP Inc.",
+    "aliases": [
+      "Hewlett-Packard"
+    ]
+  },
+  "HRL": {
+    "default": "Hormel",
+    "aliases": [
+      "Hormel Foods"
+    ]
+  },
+  "HST": {
+    "default": "Host Hotels",
+    "aliases": [
+      "Host Hotels & Resorts"
+    ]
+  },
+  "HSY": {
+    "default": "Hershey Company",
+    "aliases": [
+      "Hershey"
+    ]
+  },
+  "HUM": {
+    "default": "Humana Inc.",
+    "aliases": [
+      "Humana"
+    ]
+  },
+  "IBM": {
+    "default": "Big Blue",
+    "aliases": [
+      "IBM",
+      "International Business Machines"
+    ]
+  },
+  "ICE": {
+    "default": "ICE",
+    "aliases": [
+      "Intercontinental Exchange"
+    ]
+  },
+  "INTC": {
+    "default": "Intel Corporation",
+    "aliases": [
+      "Core",
+      "Intel",
+      "Pentium",
+      "Xeon"
+    ]
+  },
+  "INTU": {
+    "default": "Intuit Inc.",
+    "aliases": [
+      "Intuit",
+      "QuickBooks",
+      "TurboTax"
+    ]
+  },
+  "IR": {
+    "default": "Ingersoll Rand Inc.",
+    "aliases": [
+      "Ingersoll Rand"
+    ]
+  },
+  "ISRG": {
+    "default": "Intuitive Surgical Inc.",
+    "aliases": []
+  },
+  "ITW": {
+    "default": "Illinois Tool Works Inc.",
+    "aliases": []
+  },
+  "JBLU": {
+    "default": "JetBlue Airways Corp",
+    "aliases": [
+      "JetBlue Airways"
+    ]
+  },
+  "JNJ": {
+    "default": "Band-Aid",
+    "aliases": [
+      "J&J",
+      "Johnson & Johnson",
+      "Tylenol"
+    ]
+  },
+  "JPM": {
+    "default": "JPMorgan Chase & Co.",
+    "aliases": [
+      "Chase",
+      "JPMorgan",
+      "JPMorgan Chase"
+    ]
+  },
+  "JWN": {
+    "default": "Nordstrom, Inc.",
+    "aliases": [
+      "Nordstrom"
+    ]
+  },
+  "K": {
+    "default": "Kellogg Company",
+    "aliases": [
+      "Kellogg"
+    ]
+  },
+  "KD": {
+    "default": "Kinder Morgan, Inc.",
+    "aliases": [
+      "Kinder Morgan"
+    ]
+  },
+  "KEY": {
+    "default": "KeyCorp",
+    "aliases": [
+      "KeyBank"
+    ]
+  },
+  "KHC": {
+    "default": "The Kraft Heinz Company",
+    "aliases": [
+      "Heinz",
+      "Kraft",
+      "Kraft Heinz"
+    ]
+  },
+  "KMB": {
+    "default": "Kimberly-Clark Corporation",
+    "aliases": [
+      "Kimberly-Clark"
+    ]
+  },
+  "KMI": {
+    "default": "Kinder Morgan, Inc.",
+    "aliases": [
+      "Kinder Morgan"
+    ]
+  },
+  "KO": {
+    "default": "Coca-Cola Company",
+    "aliases": [
+      "Coca-Cola",
+      "Coke",
+      "Sprite",
+      "The Coca-Cola Company"
+    ]
+  },
+  "KR": {
+    "default": "Kroger Co.",
+    "aliases": [
+      "Fred Meyer",
+      "Kroger"
+    ]
+  },
+  "KRFT": {
+    "default": "Kraft",
+    "aliases": [
+      "Kraft Foods"
+    ]
+  },
+  "KSU": {
+    "default": "KCS",
+    "aliases": [
+      "Kansas City Southern"
+    ]
+  },
+  "LB": {
+    "default": "L Brands, Inc.",
+    "aliases": [
+      "L Brands"
+    ]
+  },
+  "LH": {
+    "default": "Labcorp",
+    "aliases": [
+      "Laboratory Corporation of America"
+    ]
+  },
+  "LHX": {
+    "default": "L3Harris",
+    "aliases": [
+      "L3Harris Technologies"
+    ]
+  },
+  "LIN": {
+    "default": "Linde plc",
+    "aliases": [
+      "Linde"
+    ]
+  },
+  "LLY": {
+    "default": "Lilly Inc.",
+    "aliases": [
+      "Lilly",
+      "Lilly (Eli)"
+    ]
+  },
+  "LMT": {
+    "default": "Lockheed Martin Corporation",
+    "aliases": [
+      "Lockheed Martin"
+    ]
+  },
+  "LNT": {
+    "default": "Alliant Energy Corp.",
+    "aliases": [
+      "Alliant Energy"
+    ]
+  },
+  "LOW": {
+    "default": "Lowe's",
+    "aliases": [
+      "Lowe's Companies"
+    ]
+  },
+  "LUV": {
+    "default": "Southwest Airlines Co.",
+    "aliases": [
+      "Southwest Airlines"
+    ]
+  },
+  "M": {
+    "default": "Macy's, Inc.",
+    "aliases": [
+      "Macy's"
+    ]
+  },
+  "MA": {
+    "default": "Mastercard Incorporated",
+    "aliases": [
+      "Mastercard"
+    ]
+  },
+  "MAR": {
+    "default": "Marriott International, Inc.",
+    "aliases": [
+      "Marriott",
+      "Marriott International"
+    ]
+  },
+  "MCD": {
+    "default": "McDonald's Corporation",
+    "aliases": [
+      "Big Mac",
+      "McDonald's"
+    ]
+  },
+  "MCK": {
+    "default": "McKesson Corporation",
+    "aliases": [
+      "McKesson"
+    ]
+  },
+  "MDLZ": {
+    "default": "Mondelez",
+    "aliases": [
+      "Mondelez International"
+    ]
+  },
+  "MDT": {
+    "default": "Medtronic PLC",
+    "aliases": [
+      "Medtronic"
+    ]
+  },
+  "META": {
+    "default": "Meta Platforms Inc.",
+    "aliases": [
+      "Facebook",
+      "Instagram",
+      "Meta",
+      "WhatsApp"
+    ]
+  },
+  "MGM": {
+    "default": "MGM Resorts",
+    "aliases": [
+      "MGM Resorts International"
+    ]
+  },
+  "MKC": {
+    "default": "McCormick & Company",
+    "aliases": [
+      "McCormick"
+    ]
+  },
+  "MMC": {
+    "default": "Marsh & McLennan Companies Inc.",
+    "aliases": []
+  },
+  "MMM": {
+    "default": "3M Company",
+    "aliases": [
+      "3M"
+    ]
+  },
+  "MO": {
+    "default": "Altria Group, Inc.",
+    "aliases": [
+      "Altria",
+      "Marlboro"
+    ]
+  },
+  "MPC": {
+    "default": "Marathon Petroleum Corp",
+    "aliases": [
+      "Marathon Petroleum"
+    ]
+  },
+  "MRK": {
+    "default": "Merck & Co.",
+    "aliases": [
+      "Merck",
+      "Merck & Co., Inc."
+    ]
+  },
+  "MS": {
+    "default": "Morgan Stanley & Co.",
+    "aliases": [
+      "Morgan Stanley"
+    ]
+  },
+  "MSCI": {
+    "default": "MSCI Inc.",
+    "aliases": [
+      "MSCI"
+    ]
+  },
+  "MSFT": {
+    "default": "Microsoft Corporation",
+    "aliases": [
+      "Azure",
+      "Microsoft",
+      "Office",
+      "Surface",
+      "Windows",
+      "Xbox"
+    ]
+  },
+  "MTB": {
+    "default": "M&T Bank Corporation",
+    "aliases": [
+      "M&T Bank"
+    ]
+  },
+  "MTCH": {
+    "default": "Match Group",
+    "aliases": [
+      "Match Group, Inc.",
+      "Match.com",
+      "OkCupid",
+      "Tinder"
+    ]
+  },
+  "NCLH": {
+    "default": "Norwegian Cruise Line Holdings",
+    "aliases": [
+      "Norwegian Cruise Line"
+    ]
+  },
+  "NDAQ": {
+    "default": "Nasdaq, Inc.",
+    "aliases": [
+      "Nasdaq"
+    ]
+  },
+  "NEE": {
+    "default": "NextEra Energy, Inc.",
+    "aliases": [
+      "NextEra Energy"
+    ]
+  },
+  "NEM": {
+    "default": "Newmont Corporation",
+    "aliases": [
+      "Newmont"
+    ]
+  },
+  "NFLX": {
+    "default": "Netflix, Inc.",
+    "aliases": [
+      "Netflix"
+    ]
+  },
+  "NKE": {
+    "default": "Nike, Inc.",
+    "aliases": [
+      "Jordan",
+      "Nike"
+    ]
+  },
+  "NOC": {
+    "default": "Northrop Grumman Corporation",
+    "aliases": [
+      "Northrop Grumman"
+    ]
+  },
+  "NSC": {
+    "default": "Norfolk Southern Corporation",
+    "aliases": [
+      "Norfolk Southern"
+    ]
+  },
+  "NUE": {
+    "default": "Nucor Corporation",
+    "aliases": [
+      "Nucor"
+    ]
+  },
+  "NVAX": {
+    "default": "Novavax, Inc.",
+    "aliases": [
+      "Novavax"
+    ]
+  },
+  "NVDA": {
+    "default": "NVIDIA Corporation",
+    "aliases": [
+      "GeForce",
+      "Nvidia",
+      "RTX"
+    ]
+  },
+  "O": {
+    "default": "Realty Income",
+    "aliases": [
+      "Realty Income Corporation"
+    ]
+  },
+  "ORCL": {
+    "default": "Oracle Corporation",
+    "aliases": [
+      "Java",
+      "MySQL",
+      "Oracle"
+    ]
+  },
+  "PAE": {
+    "default": "PAE Incorporated",
+    "aliases": [
+      "PAE"
+    ]
+  },
+  "PCAR": {
+    "default": "PACCAR Inc.",
+    "aliases": [
+      "PACCAR"
+    ]
+  },
+  "PCG": {
+    "default": "PG&E Corporation",
+    "aliases": [
+      "PG&E"
+    ]
+  },
+  "PEP": {
+    "default": "PepsiCo, Inc.",
+    "aliases": [
+      "Doritos",
+      "Gatorade",
+      "Lays",
+      "Pepsi",
+      "PepsiCo"
+    ]
+  },
+  "PFE": {
+    "default": "Pfizer Inc.",
+    "aliases": [
+      "Lipitor",
+      "Pfizer",
+      "Viagra"
+    ]
+  },
+  "PG": {
+    "default": "Gillette",
+    "aliases": [
+      "P&G",
+      "Pampers",
+      "Procter & Gamble"
+    ]
+  },
+  "PKG": {
+    "default": "Packaging Corp",
+    "aliases": [
+      "Packaging Corporation of America"
+    ]
+  },
+  "PLD": {
+    "default": "Prologis Inc",
+    "aliases": [
+      "Prologis"
+    ]
+  },
+  "PM": {
+    "default": "Philip Morris International Inc.",
+    "aliases": []
+  },
+  "PNC": {
+    "default": "PNC Financial",
+    "aliases": [
+      "PNC Financial Services"
+    ]
+  },
+  "PNW": {
+    "default": "Pinnacle West",
+    "aliases": [
+      "Pinnacle West Capital"
+    ]
+  },
+  "PPL": {
+    "default": "PPL Corporation",
+    "aliases": [
+      "PPL"
+    ]
+  },
+  "PSA": {
+    "default": "Public Storage Inc.",
+    "aliases": [
+      "Public Storage"
+    ]
+  },
+  "PYPL": {
+    "default": "PayPal Holdings",
+    "aliases": [
+      "PayPal"
+    ]
+  },
+  "PZZA": {
+    "default": "Papa John's",
+    "aliases": [
+      "Papa John's International"
+    ]
+  },
+  "QCOM": {
+    "default": "QUALCOMM Incorporated",
+    "aliases": []
+  },
+  "QRVO": {
+    "default": "Qorvo Inc.",
+    "aliases": [
+      "Qorvo"
+    ]
+  },
+  "RCL": {
+    "default": "Royal Caribbean",
+    "aliases": [
+      "Royal Caribbean Cruises"
+    ]
+  },
+  "REGN": {
+    "default": "Regeneron",
+    "aliases": [
+      "Regeneron Pharmaceuticals"
+    ]
+  },
+  "ROST": {
+    "default": "Ross",
+    "aliases": [
+      "Ross Stores"
+    ]
+  },
+  "RTN": {
+    "default": "Raytheon Technologies Corporation",
+    "aliases": [
+      "RTX",
+      "Raytheon"
+    ]
+  },
+  "RTX": {
+    "default": "Raytheon Technologies Corporation",
+    "aliases": [
+      "Raytheon"
+    ]
+  },
+  "SAP": {
+    "default": "SAP",
+    "aliases": [
+      "SAP SE"
+    ]
+  },
+  "SBAC": {
+    "default": "SBA Communications Corporation",
+    "aliases": [
+      "SBA Communications"
+    ]
+  },
+  "SBUX": {
+    "default": "Starbucks Corporation",
+    "aliases": [
+      "Starbucks"
+    ]
+  },
+  "SCHW": {
+    "default": "Charles Schwab",
+    "aliases": [
+      "Schwab"
+    ]
+  },
+  "SEE": {
+    "default": "Sealed Air Corporation",
+    "aliases": [
+      "Sealed Air"
+    ]
+  },
+  "SHOP": {
+    "default": "Shopify, Inc.",
+    "aliases": [
+      "Shopify"
+    ]
+  },
+  "SHW": {
+    "default": "Sherwin-Williams Company",
+    "aliases": [
+      "Sherwin-Williams"
+    ]
+  },
+  "SIVB": {
+    "default": "SVB Financial Group",
+    "aliases": [
+      "Silicon Valley Bank"
+    ]
+  },
+  "SKX": {
+    "default": "Skechers",
+    "aliases": [
+      "Skechers U.S.A."
+    ]
+  },
+  "SLB": {
+    "default": "Schlumberger",
+    "aliases": [
+      "Schlumberger Limited"
+    ]
+  },
+  "SLG": {
+    "default": "SL Green",
+    "aliases": [
+      "SL Green Realty"
+    ]
+  },
+  "SO": {
+    "default": "Southern Co.",
+    "aliases": [
+      "Southern Company"
+    ]
+  },
+  "SPG": {
+    "default": "Simon Property Group",
+    "aliases": [
+      "Simon Property Group, Inc."
+    ]
+  },
+  "SPGI": {
+    "default": "S&P Global",
+    "aliases": [
+      "Standard & Poor's"
+    ]
+  },
+  "SRE": {
+    "default": "Sempra",
+    "aliases": [
+      "Sempra Energy"
+    ]
+  },
+  "SVU": {
+    "default": "SuperValu Inc.",
+    "aliases": [
+      "SuperValu"
+    ]
+  },
+  "SWKS": {
+    "default": "Skyworks",
+    "aliases": [
+      "Skyworks Solutions"
+    ]
+  },
+  "SYK": {
+    "default": "Stryker Corporation",
+    "aliases": [
+      "Stryker"
+    ]
+  },
+  "T": {
+    "default": "AT&T Inc.",
+    "aliases": [
+      "AT&T"
+    ]
+  },
+  "TDG": {
+    "default": "TransDigm Group",
+    "aliases": [
+      "TransDigm"
+    ]
+  },
+  "TGT": {
+    "default": "Target Corporation",
+    "aliases": [
+      "Target"
+    ]
+  },
+  "TJX": {
+    "default": "TJX",
+    "aliases": [
+      "TJX Companies"
+    ]
+  },
+  "TM": {
+    "default": "Toyota Motor Corporation",
+    "aliases": [
+      "Toyota"
+    ]
+  },
+  "TMO": {
+    "default": "Thermo Fisher Scientific Inc.",
+    "aliases": []
+  },
+  "TMP": {
+    "default": "Tesla, Inc.",
+    "aliases": [
+      "Tesla Motors"
+    ]
+  },
+  "TMUS": {
+    "default": "T-Mobile US Inc.",
+    "aliases": []
+  },
+  "TSLA": {
+    "default": "Tesla, Inc.",
+    "aliases": [
+      "Cybertruck",
+      "Model 3",
+      "Model S",
+      "Model X",
+      "Model Y",
+      "Tesla"
+    ]
+  },
+  "TTWO": {
+    "default": "Take-Two Interactive Software, Inc.",
+    "aliases": [
+      "Grand Theft Auto",
+      "NBA 2K",
+      "Take-Two Interactive"
+    ]
+  },
+  "TXN": {
+    "default": "Texas Instruments Incorporated",
+    "aliases": []
+  },
+  "UAL": {
+    "default": "United Airlines Holdings",
+    "aliases": [
+      "United Airlines"
+    ]
+  },
+  "UDR": {
+    "default": "UDR Company",
+    "aliases": [
+      "UDR",
+      "UDR, Inc."
+    ]
+  },
+  "UHS": {
+    "default": "Universal Health Services, Inc.",
+    "aliases": [
+      "Universal Health Services"
+    ]
+  },
+  "UNG": {
+    "default": "UNG",
+    "aliases": [
+      "United States Natural Gas Fund"
+    ]
+  },
+  "UNH": {
+    "default": "UnitedHealth Group",
+    "aliases": [
+      "Optum",
+      "UnitedHealth",
+      "UnitedHealth Group Inc.",
+      "UnitedHealthcare"
+    ]
+  },
+  "UNP": {
+    "default": "Union Pacific",
+    "aliases": [
+      "Union Pacific Railroad"
+    ]
+  },
+  "UPS": {
+    "default": "United Parcel Service, Inc.",
+    "aliases": [
+      "UPS",
+      "United Parcel Service"
+    ]
+  },
+  "USB": {
+    "default": "U.S. Bancorp",
+    "aliases": [
+      "US Bancorp"
+    ]
+  },
+  "V": {
+    "default": "Visa Inc.",
+    "aliases": [
+      "Visa"
+    ]
+  },
+  "VFC": {
+    "default": "VFC",
+    "aliases": [
+      "Vans"
+    ]
+  },
+  "VNO": {
+    "default": "Vornado",
+    "aliases": [
+      "Vornado Realty Trust"
+    ]
+  },
+  "VRTX": {
+    "default": "Vertex",
+    "aliases": [
+      "Vertex Pharmaceuticals"
+    ]
+  },
+  "VTR": {
+    "default": "Ventas, Inc.",
+    "aliases": [
+      "Ventas"
+    ]
+  },
+  "VZ": {
+    "default": "Verizon Communications Inc.",
+    "aliases": []
+  },
+  "WBA": {
+    "default": "Walgreens Boots Alliance, Inc.",
+    "aliases": [
+      "Boots",
+      "Walgreens",
+      "Walgreens Boots Alliance"
+    ]
+  },
+  "WEN": {
+    "default": "Wendy's Company",
+    "aliases": [
+      "Wendy's"
+    ]
+  },
+  "WFC": {
+    "default": "Wells Fargo & Company",
+    "aliases": [
+      "Wells Fargo"
+    ]
+  },
+  "WING": {
+    "default": "Wingstop Inc.",
+    "aliases": [
+      "Wingstop"
+    ]
+  },
+  "WM": {
+    "default": "Waste Management Inc.",
+    "aliases": []
+  },
+  "WMT": {
+    "default": "Walmart Inc.",
+    "aliases": [
+      "Sam's Club",
+      "Walmart"
+    ]
+  },
+  "WY": {
+    "default": "Weyerhaeuser Company",
+    "aliases": [
+      "Weyerhaeuser"
+    ]
+  },
+  "WYNN": {
+    "default": "Wynn",
+    "aliases": [
+      "Wynn Resorts"
+    ]
+  },
+  "XLE": {
+    "default": "Energy Select Sector",
+    "aliases": [
+      "XLE"
+    ]
+  },
+  "XOM": {
+    "default": "ExxonMobil Corporation",
+    "aliases": [
+      "Esso",
+      "Exxon",
+      "ExxonMobil"
+    ]
+  },
+  "XRAY": {
+    "default": "Dentsply Sirona, Inc.",
+    "aliases": [
+      "DENTSPLY SIRONA"
+    ]
+  },
+  "YETI": {
+    "default": "YETI Holdings",
+    "aliases": [
+      "YETI"
+    ]
+  },
+  "YUM": {
+    "default": "Yum! Brands, Inc.",
+    "aliases": [
+      "KFC",
+      "Pizza Hut",
+      "Taco Bell",
+      "Yum Brands",
+      "Yum! Brands"
+    ]
+  },
+  "ZNGA": {
+    "default": "Zynga Inc.",
+    "aliases": [
+      "Zynga"
+    ]
+  },
+  "ZTS": {
+    "default": "Zoetis Inc.",
+    "aliases": [
+      "Zoetis"
+    ]
+  }
 }
