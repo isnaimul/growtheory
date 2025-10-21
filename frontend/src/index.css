@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Clean Black Theme */
+  --bg-primary: #000;
+  --text-primary: #fff;
+  --text-secondary: #888;
+  --accent: #6366f1;
+  --accent-light: #8b5cf6;
+  --border: #222;
+  --border-light: #333;
+}
+
+body {
+ font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+ overflow-x: hidden; 
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Global container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* Doto font for branding */
+.logo,
+.brand-text {
+  font-family: 'Doto', sans-serif;
+  font-weight: 600;
+}
