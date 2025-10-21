@@ -26,7 +26,7 @@ def lambda_handler(event, context):
 
     # Determine which endpoint was called
     http_method = event.get("httpMethod", "POST")
-    path = event.get("path", "/api/analyze")
+    path = event.get("path", "/analyze")
 
     print(f"Request: {http_method} {path}")
 
@@ -86,29 +86,51 @@ def handle_analyze(event, context):
 
 
 def handle_dashboard(event, context):
-    """GET /dashboard - Return all cached companies"""
-
+    """GET /dashboard?page=1 - Return paginated cached companies"""
+    
     try:
-        print("Fetching dashboard data...")
+        # Get page number from query params (default to 1)
+        params = event.get('queryStringParameters', {}) or {}
+        page = int(params.get('page', 1))
+        per_page = 6
+        
+        print(f"Fetching dashboard data - page {page}")
 
         response = cache_table.scan()
-
+        all_companies = response.get('Items', [])
+        
+        # Convert and sort
         companies = []
-        for item in response.get('Items', []):
+        for item in all_companies:
             companies.append({
                 'ticker': item['ticker'],
                 'company': item['company'],
-                'score': int(item.get('score', 75)),  # Convert Decimal to int
+                'score': int(item.get('score', 75)),
                 'grade': item.get('grade', 'B'),
                 'timestamp': item['timestamp']
             })
-
-        # Sort by most recent first
+        
         companies.sort(key=lambda x: x["timestamp"], reverse=True)
+        
+        # Calculate pagination
+        total_companies = len(companies)
+        total_pages = max(1, (total_companies + per_page - 1) // per_page)
+        start_idx = (page - 1) * per_page
+        end_idx = start_idx + per_page
+        
+        page_companies = companies[start_idx:end_idx]
 
-        print(f"Returning {len(companies)} cached companies")
+        print(f"Returning {len(page_companies)} companies (page {page}/{total_pages})")
 
-        return success_response(companies[:20])  # Limit to 20 most recent
+        return success_response({
+            'companies': page_companies,
+            'pagination': {
+                'current_page': page,
+                'total_pages': total_pages,
+                'total_companies': total_companies,
+                'per_page': per_page
+            }
+        })
 
     except Exception as e:
         print(f"Dashboard error: {str(e)}")

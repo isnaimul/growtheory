@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TrendingUp, Clock, Award } from "lucide-react";
+import { TrendingUp, Clock, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import "../../styles/dashboard.css";
 import apiService from "../../services/api";
 
-console.log("API Base URL:", import.meta.env.VITE_API_BASE_URL);
-console.log(
-  "Full Dashboard URL:",
-  `${import.meta.env.VITE_API_BASE_URL}/dashboard`
-);
-
 const Dashboard = () => {
   const [companies, setCompanies] = useState([]);
+  const [pagination, setPagination] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchDashboard();
-  }, []);
+    fetchDashboard(currentPage);
+  }, [currentPage]);
 
-  const fetchDashboard = async () => {
+  const fetchDashboard = async (page) => {
     try {
-      console.log("Fetching dashboard...");
-      const data = await apiService.getDashboard();
+      setLoading(true);
+      console.log(`Fetching dashboard page ${page}...`);
+      const data = await apiService.getDashboard(page);
       console.log("Dashboard data received:", data);
-      setCompanies(data);
+      setCompanies(data.companies);
+      setPagination(data.pagination);
     } catch (error) {
       console.error("Failed to fetch dashboard:", error);
     } finally {
@@ -34,6 +32,14 @@ const Dashboard = () => {
 
   const handleCardClick = (ticker) => {
     navigate(`/report?ticker=${ticker}`);
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= pagination.total_pages) {
+      setCurrentPage(newPage);
+      // Scroll to top of dashboard
+      document.querySelector('.dashboard-section')?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const getTimeAgo = (timestamp) => {
@@ -67,7 +73,7 @@ const Dashboard = () => {
     );
   }
 
-  if (companies.length === 0) {
+  if (!pagination || companies.length === 0) {
     return (
       <section className="dashboard-section">
         <div className="container">
@@ -84,6 +90,7 @@ const Dashboard = () => {
     <section className="dashboard-section">
       <div className="container">
         <h2 className="dashboard-title">Recently Analyzed Companies</h2>
+        
         <div className="dashboard-grid">
           {companies.map((company, index) => (
             <div
@@ -117,6 +124,44 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {pagination.total_pages > 1 && (
+          <div className="pagination">
+            <button
+              className="pagination-btn"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft size={20} />
+              Previous
+            </button>
+
+            <div className="pagination-numbers">
+              {[...Array(pagination.total_pages)].map((_, index) => {
+                const pageNum = index + 1;
+                return (
+                  <button
+                    key={pageNum}
+                    className={`page-number ${pageNum === currentPage ? 'active' : ''}`}
+                    onClick={() => handlePageChange(pageNum)}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              className="pagination-btn"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === pagination.total_pages}
+            >
+              Next
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
