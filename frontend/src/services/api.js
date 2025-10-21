@@ -9,10 +9,6 @@ class ApiService {
   }
 
   async analyzeCompany(companyName, ticker = null) {
-    console.log("=== API Service analyzeCompany ===");
-    console.log("companyName:", companyName);
-    console.log("ticker:", ticker);
-
     try {
       const payload = {
         company: companyName,

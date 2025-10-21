@@ -13,7 +13,6 @@ const Hero = () => {
   const { setIsLoading } = useReport();
 
   const handleCompanySelect = (ticker, name) => {
-    console.log("Company selected:", ticker, name);
     setCompanyInput(name); // Update display
     setSelectedTicker(ticker); // Store ticker for analysis
   };
@@ -32,7 +31,6 @@ const Hero = () => {
       setSelectedTicker(null);
     } catch (error) {
       alert("Error analyzing company. Please try again.");
-      console.error("Analysis error:", error);
     } finally {
       setIsLoading(false);
     }

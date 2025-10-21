@@ -34,16 +34,13 @@ const Dashboard = () => {
       const cachedTime = cacheTimestamp[page];
 
       if (cachedData && cachedTime && now - cachedTime < CACHE_DURATION) {
-        console.log(`Using cached data for page ${page}`);
         setCompanies(cachedData.companies);
         setPagination(cachedData.pagination);
         setLoading(false);
         return;
       }
 
-      console.log(`Fetching dashboard page ${page}...`);
       const data = await apiService.getDashboard(page);
-      console.log("Dashboard data received:", data);
 
       setCompanies(data.companies);
       setPagination(data.pagination);
@@ -51,7 +48,6 @@ const Dashboard = () => {
       setCache((prev) => ({ ...prev, [page]: data }));
       setCacheTimestamp((prev) => ({ ...prev, [page]: now }));
     } catch (error) {
-      console.error("Failed to fetch dashboard:", error);
     } finally {
       setLoading(false);
     }
@@ -96,7 +92,25 @@ const Dashboard = () => {
       <section className="dashboard-section">
         <div className="container">
           <h2 className="dashboard-title">Recently Analyzed Companies</h2>
-          <div className="loading-state">Loading dashboard...</div>
+
+          {/* Skeleton cards while loading */}
+          <div className="dashboard-grid">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="company-card skeleton">
+                <div className="skeleton-header">
+                  <div className="skeleton-text"></div>
+                  <div className="skeleton-badge"></div>
+                </div>
+                <div className="skeleton-stats">
+                  <div className="skeleton-line"></div>
+                  <div className="skeleton-line"></div>
+                </div>
+                <div className="skeleton-footer">
+                  <div className="skeleton-line short"></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
