@@ -114,7 +114,6 @@ def handle_dashboard(event, context):
         
         # Cache miss or expired - fetch from DynamoDB
         if not DASHBOARD_CACHE:
-            print(f"Fetching from DynamoDB...")
             response = cache_table.scan()
             all_companies = response.get('Items', [])
             
@@ -143,7 +142,6 @@ def handle_dashboard(event, context):
         
         page_companies = companies[start_idx:end_idx]
 
-        print(f"Returning {len(page_companies)} companies (page {page}/{total_pages})")
 
         return success_response({
             'companies': page_companies,
@@ -171,7 +169,6 @@ def handle_get_report(event, context):
         if not ticker:
             return error_response(400, 'ticker parameter required')
         
-        print(f"Fetching report for {ticker}")
         
         response = cache_table.get_item(Key={'ticker': ticker.upper()})
         
