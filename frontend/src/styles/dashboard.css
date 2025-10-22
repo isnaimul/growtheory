@@ -225,6 +225,7 @@
   pointer-events: none;
   background: rgba(17, 17, 17, 0.6);
   animation: pulse 1.5s ease-in-out infinite;
+  min-height: 240px;
 }
 
 @keyframes pulse {
@@ -293,5 +294,11 @@
   }
   100% {
     background-position: -200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-card.skeleton {
+    min-height: 180px;
   }
 }

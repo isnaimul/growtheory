@@ -14,8 +14,6 @@ class ApiService {
         company: companyName,
         ticker: ticker || companyName,
       };
-      console.log("Sending payload:", payload);
-      console.log("To URL:", `${this.baseUrl}${ANALYZE_ENDPOINT}`);
 
       const response = await fetch(`${this.baseUrl}${ANALYZE_ENDPOINT}`, {
         method: "POST",
@@ -25,13 +23,11 @@ class ApiService {
         body: JSON.stringify(payload),
       });
 
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
-
       if (!response.ok) {
         const errorText = await response.text();
-        console.log("Error response body:", errorText);
-        throw new Error(`HTTP error! status: ${response.status}`);
+        console.error("Status:", response.status);
+        console.error("Response body:", errorText);
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
       const data = await response.json();
@@ -61,10 +57,8 @@ class ApiService {
 
   async getDashboard(page = 1) {
     const url = `${this.baseUrl}/dashboard?page=${page}`;
-    console.log("Calling dashboard URL:", url);
     try {
       const response = await fetch(`${this.baseUrl}/dashboard?page=${page}`);
-      console.log("Response status:", response.status);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
