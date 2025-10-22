@@ -72,8 +72,6 @@ const Dashboard = () => {
     const then = new Date(timestamp).getTime(); // also milliseconds
     const diffMs = now - then;
 
-    console.log(`Timestamp: ${timestamp}, Diff: ${diffMs}ms`);
-    
     if (diffMs < 0) return "Just now"; // Handle future timestamps
 
     const minutes = Math.floor(diffMs / (1000 * 60));
