@@ -1,85 +1,215 @@
-# GrowTheory - AI Company Intelligence Platform
+# GrowTheory - AI-Powered Company Intelligence Platform
 
-An AI-powered platform that helps job seekers analyze companies and make informed career decisions using AWS Bedrock.
+An AI agent that provides real-time financial intelligence on publicly traded companies, helping investors and analysts make data-driven decisions.
 
-## Project Status
+**Live Demo:** [growtheory.vercel.app](https://growtheory.vercel.app)
 
-**Hackathon:** AWS AI Agent Global Hackathon  
-**Days Remaining: 6** 
-**Day 4 Progress:**
-- ✅ Pivoted from Lambda/Bedrock Agent to Strands SDK
-- ✅ Financial analyzer tool with yfinance integration
-- ✅ Company health scoring (0-100 scale)
-- ✅ Strands Agent with tool calling working
-- ✅ End-to-end test with Claude 3.5 Haiku
+---
 
-**Previous Progress:**
-- Built basic Bedrock connection
-- Repository setup with proper structure
-- AWS credentials configured
-- Initial Lambda exploration (pivoted to Strands)
+## What It Does
 
-**Next Steps (Day 5):**
-- Add Wikipedia tool for company background
-- Add news sentiment analysis tool
-- Implement multi-stage reasoning based on company type
-- Begin frontend development
+GrowTheory is an autonomous AI agent that analyzes companies by:
+- **Gathering financial data** from Yahoo Finance (revenue, market cap, profitability, stock performance)
+- **Analyzing market sentiment** via AlphaVantage and NewsAPI
+- **Providing economic context** using Federal Reserve economic indicators (FRED)
+- **Generating intelligence reports** with investment outlook and risk assessment
 
-## Tech Stack
+Simply search for any publicly traded company ticker (e.g., AAPL, MSFT, TSLA) and get a comprehensive analysis in under 3 minutes.
 
-- **Agent Framework:** Strands SDK
-- **LLM:** Claude 3.5 Haiku via Amazon Bedrock
-- **Tools:** Custom Python tools with @tool decorator
-- **Data Sources:** yfinance, NewsAPI (planned), Wikipedia (planned)
-- **Python:** 3.13
+---
+
+## Architecture
+
+### Tech Stack
+- **Frontend:** React + Vite, deployed on Vercel
+- **Backend:** AWS Lambda (Docker container)
+- **AI Agent:** Amazon Bedrock (Claude 3.5 Haiku) + Strands SDK
+- **Data Sources:** 
+  - Yahoo Finance (yfinance)
+  - AlphaVantage API
+  - NewsAPI
+  - Federal Reserve Economic Data (FRED)
+- **Storage:** DynamoDB with TTL-based expiration
+- **API Gateway:** REST API with CORS-enabled endpoints
+
+### Agent Architecture
+The AI agent uses **multi-stage reasoning** powered by Amazon Bedrock:
+
+1. **Financial Analysis Tool** - Fetches real-time market data, calculates health scores
+2. **News Sentiment Tool** - Analyzes recent news and market sentiment
+3. **Agent Orchestration** - Claude autonomously decides which tools to call based on context
+4. **Report Generation** - Synthesizes data into actionable intelligence
+
+### AWS Services Used
+- **Amazon Bedrock** - LLM inference (Claude 3.5 Haiku)
+- **AWS Lambda** - Containerized Python application with agent logic
+- **Amazon API Gateway** - RESTful API endpoints
+- **Amazon DynamoDB** - Company analysis cache with TTL
+- **Amazon ECR** - Docker image registry
+- **Amazon CloudWatch** - Logging and monitoring
+
+---
+
+## Features
+
+### Intelligent Caching
+- **Multi-layer caching** reduces latency and costs:
+  - Frontend cache (5 minutes)
+  - Lambda memory cache (5 minutes) 
+  - DynamoDB persistent cache (24 hours)
+
+### Smart Pagination
+- Dashboard displays analyzed companies with pagination
+- Real-time cache status tracking
+
+### Graceful Degradation
+- Agent continues analysis even if individual APIs fail
+- Transparent status reporting (`complete`, `partial`, `failed`)
+
+### Investment Intelligence
+- Overall health score (0-100)
+- Letter grade assessment (A+ to D)
+- Green flags and risk factors
+- Market sentiment analysis
+- Investment outlook (BULLISH/NEUTRAL/BEARISH)
+
+---
+
+## 🎮 How to Use
+
+1. **Visit** [growtheory.vercel.app](https://growtheory.vercel.app)
+2. **Search** for a company using its stock ticker (e.g., AAPL, MSFT, GOOGL)
+3. **Wait** ~2-3 minutes while the AI agent gathers and analyzes data
+4. **Review** the comprehensive intelligence report with:
+   - Financial health score
+   - Market sentiment
+   - Investment outlook
+   - Risk assessment
+
+---
 
 ## Project Structure
-```bash
-backend/
-├── agents/          # Strands agents
-├── tools/           # Custom tools (financial, news, etc.)
-├── tests/           # Test files
-└── config/          # Configuration and prompts
+```
+growtheory/
+├── frontend/               # React application
+│   ├── src/
+│   │   ├── components/    # UI components
+│   │   ├── pages/         # Page components
+│   │   ├── services/      # API service layer
+│   │   └── styles/        # CSS files
+│   └── package.json
+│
+├── backend/
+│   ├── agents/            # Strands AI agent
+│   │   └── company_analyst.py
+│   ├── tools/             # Agent tools
+│   │   ├── financial_analyzer.py
+│   │   └── news_analyzer.py
+│   ├── lambdas/           # Lambda handler
+│   │   └── lambda_handler.py
+│   ├── Dockerfile         # Container definition
+│   └── requirements.txt
+│
+└── README.md
 ```
 
-## Development Setup
+---
+
+## 🛠️ Local Development (Optional)
+
+The application is fully deployed, but if you want to run it locally:
 
 ### Prerequisites
 - Python 3.13+
-- AWS Account with Bedrock access (Claude 3.5 Haiku)
-- Virtual environment
+- Node.js 18+
+- AWS Account with Bedrock access
+- API Keys: AlphaVantage, NewsAPI, FRED
 
-### Installation
+### Backend Setup
 ```bash
-# Clone and setup
-git clone https://github.com/alisayeed248/growtheory.git
-cd growtheory
+cd backend
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # Mac/Linux
 
-# If on Windows, just run the ps1.
-.\dev.ps1
+pip install -r requirements.txt
+
+# Set environment variables
+export ALPHAVANTAGE_API_KEY=your_key
+export NEWS_API_KEY=your_key
+export FRED_API_KEY=your_key
+export COMPANY_CACHE_TABLE_NAME=your_dynamodb_table
 ```
 
-### Running the Agent
+### Frontend Setup
 ```bash
-python backend/tests/test_financial_tool.py
-```
-## Development Workflow
+cd frontend
+npm install
 
-### Creating a Feature Branch
-```bash
-# Create and switch to new branch
-git checkout -b feature/your-feature-name
+# Create .env.local
+echo "VITE_API_BASE_URL=your_api_gateway_url" > .env.local
 
-# Make changes, then commit
-git add .
-git commit -m "Add feature description"
-
-# Push branch to GitHub
-git push origin feature/your-feature-name
+npm run dev
 ```
 
-### Useful Links
-1. [Bedrock](https://docs.aws.amazon.com/bedrock/)
-2. [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime.html)
-3. [Strands SDK Documentation](https://strandsagents.com/latest/documentation/docs/examples/)
-4. [Strands Tools Reference](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/tools/community-tools-package/)
+---
+
+## Hackathon Compliance
+
+### AWS AI Agent Global Hackathon Requirements
+
+✅ **LLM hosted on AWS**
+- Amazon Bedrock with Claude 3.5 Haiku
+
+✅ **Agent Framework**
+- Strands SDK with custom tools
+
+✅ **Autonomous Capabilities**
+- Agent independently decides which tools to call
+- Multi-stage reasoning with context awareness
+
+✅ **External Integrations**
+- 4 external APIs: Yahoo Finance, AlphaVantage, NewsAPI, FRED
+- Real-time data fetching and synthesis
+
+✅ **AWS Services Used**
+- Amazon Bedrock (LLM)
+- AWS Lambda (compute)
+- Amazon DynamoDB (storage)
+- Amazon API Gateway (API management)
+- Amazon ECR (container registry)
+- Amazon CloudWatch (monitoring)
+
+---
+
+## Performance
+
+- **Average analysis time:** 120-180 seconds (fresh data)
+- **Cached results:** < 1 second
+- **Lambda cold start:** ~1.5 seconds
+- **Lambda warm execution:** ~10ms (with cache hit)
+- **DynamoDB reads:** Minimal due to multi-layer caching
+
+---
+
+## Security Features
+
+- **API Gateway rate limiting:** 10 req/sec, 20 burst
+- **CORS-enabled endpoints**
+- **IAM least-privilege policies**
+- **Environment variable management**
+- **No sensitive data in frontend**
+
+---
+
+## 👥 Team
+
+Built by Naimul Islam & Sayeed Ali
+
+---
+
+##  Acknowledgments
+
+- AWS Bedrock team for Claude API access
+- Strands SDK for agent framework
+- AlphaVantage, NewsAPI, and FRED for data APIs

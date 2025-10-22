@@ -5,14 +5,21 @@ import boto3
 import os
 import time
 import random
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from decimal import Decimal
 from agents.company_analyst import company_agent
+
+# Lambda memory cache (persists across invocations)
+DASHBOARD_CACHE = None
+CACHE_TIMESTAMP = None
+CACHE_DURATION_SECONDS = 300  # 5 minutes
 
 TABLE_NAME = os.environ.get("COMPANY_CACHE_TABLE_NAME")
 
 if not TABLE_NAME:
-    raise EnvironmentError("COMPANY_CACHE_TABLE_NAME environment variable not set. Cannot initialize DynamoDB.")
+    raise EnvironmentError(
+        "COMPANY_CACHE_TABLE_NAME environment variable not set. Cannot initialize DynamoDB."
+    )
 
 # DynamoDB setup
 dynamodb = boto3.resource("dynamodb")
@@ -87,50 +94,72 @@ def handle_analyze(event, context):
 
 def handle_dashboard(event, context):
     """GET /dashboard?page=1 - Return paginated cached companies"""
-    
-    try:
-        # Get page number from query params (default to 1)
-        params = event.get('queryStringParameters', {}) or {}
-        page = int(params.get('page', 1))
-        per_page = 6
-        
-        print(f"Fetching dashboard data - page {page}")
 
-        response = cache_table.scan()
-        all_companies = response.get('Items', [])
-        
+    global DASHBOARD_CACHE, CACHE_TIMESTAMP
+
+    try:
+        # Get page number from query params
+        params = event.get("queryStringParameters", {}) or {}
+        page = int(params.get("page", 1))
+        per_page = 6
+
+        # Check Lambda memory cache
+        now = datetime.now(timezone.utc)
+        if DASHBOARD_CACHE and CACHE_TIMESTAMP:
+            age = (now - CACHE_TIMESTAMP).total_seconds()
+            if age < CACHE_DURATION_SECONDS:
+                print(f"✓ Lambda cache HIT - {age:.1f}s old")
+                all_companies = DASHBOARD_CACHE
+            else:
+                print(f"✗ Lambda cache EXPIRED - {age:.1f}s old")
+                DASHBOARD_CACHE = None
+
+        # Cache miss or expired - fetch from DynamoDB
+        if not DASHBOARD_CACHE:
+            response = cache_table.scan()
+            all_companies = response.get("Items", [])
+
+            if all_companies:
+                print(f"DEBUG: Sample timestamp from DB: {all_companies[0].get('timestamp')}")
+
+            # Store in Lambda cache
+            DASHBOARD_CACHE = all_companies
+            CACHE_TIMESTAMP = now
+
         # Convert and sort
         companies = []
         for item in all_companies:
-            companies.append({
-                'ticker': item['ticker'],
-                'company': item['company'],
-                'score': int(item.get('score', 75)),
-                'grade': item.get('grade', 'B'),
-                'timestamp': item['timestamp']
-            })
-        
+            companies.append(
+                {
+                    "ticker": item["ticker"],
+                    "company": item["company"],
+                    "score": int(item.get("score", 75)),
+                    "grade": item.get("grade", "B"),
+                    "timestamp": item["timestamp"],
+                }
+            )
+
         companies.sort(key=lambda x: x["timestamp"], reverse=True)
-        
+
         # Calculate pagination
         total_companies = len(companies)
         total_pages = max(1, (total_companies + per_page - 1) // per_page)
         start_idx = (page - 1) * per_page
         end_idx = start_idx + per_page
-        
+
         page_companies = companies[start_idx:end_idx]
 
-        print(f"Returning {len(page_companies)} companies (page {page}/{total_pages})")
-
-        return success_response({
-            'companies': page_companies,
-            'pagination': {
-                'current_page': page,
-                'total_pages': total_pages,
-                'total_companies': total_companies,
-                'per_page': per_page
+        return success_response(
+            {
+                "companies": page_companies,
+                "pagination": {
+                    "current_page": page,
+                    "total_pages": total_pages,
+                    "total_companies": total_companies,
+                    "per_page": per_page,
+                },
             }
-        })
+        )
 
     except Exception as e:
         print(f"Dashboard error: {str(e)}")
@@ -142,21 +171,19 @@ def handle_get_report(event, context):
     """GET /report?ticker=AMZN - Get specific cached report"""
 
     try:
-        params = event.get('queryStringParameters', {}) or {}
-        ticker = params.get('ticker')
-        
+        params = event.get("queryStringParameters", {}) or {}
+        ticker = params.get("ticker")
+
         if not ticker:
-            return error_response(400, 'ticker parameter required')
-        
-        print(f"Fetching report for {ticker}")
-        
-        response = cache_table.get_item(Key={'ticker': ticker.upper()})
-        
-        if 'Item' not in response:
-            return error_response(404, f'Company {ticker} not found in cache')
-        
+            return error_response(400, "ticker parameter required")
+
+        response = cache_table.get_item(Key={"ticker": ticker.upper()})
+
+        if "Item" not in response:
+            return error_response(404, f"Company {ticker} not found in cache")
+
         # Convert Decimals before returning
-        return success_response(decimal_to_int(response['Item']))
+        return success_response(decimal_to_int(response["Item"]))
 
     except Exception as e:
         print(f"Get report error: {str(e)}")
@@ -176,7 +203,7 @@ def get_or_create_analysis(company, ticker):
         if "Item" in response:
             cached_data = response["Item"]
             cached_at = datetime.fromisoformat(cached_data["timestamp"])
-            age_hours = (datetime.now() - cached_at).total_seconds() / 3600
+            age_hours = (datetime.now(timezone.utc) - cached_at).total_seconds() / 3600
 
             # Check if cache is still fresh
             if age_hours < CACHE_DURATION_HOURS:
@@ -218,9 +245,12 @@ def get_or_create_analysis(company, ticker):
     grade = calculate_grade(score)
 
     # Prepare cache item
-    timestamp = datetime.now().isoformat()
+    timestamp = datetime.now(timezone.utc).isoformat()
+    print(f"DEBUG: Storing timestamp: {timestamp}")
+    print(f"DEBUG: Parsed back: {datetime.fromisoformat(timestamp)}")
+    
     expires_at = int(
-        (datetime.now() + timedelta(hours=CACHE_DURATION_HOURS)).timestamp()
+        (datetime.now(timezone.utc) + timedelta(hours=CACHE_DURATION_HOURS)).timestamp()
     )
 
     cache_item = {
