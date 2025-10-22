@@ -30,9 +30,7 @@ const Hero = () => {
       setCompanyInput("");
       setSelectedTicker(null);
     } catch (error) {
-      console.error("Full error object:", error);
       console.error("Error message:", error.message);
-      console.error("Error stack:", error.stack);
 
       if (!error.message.includes("HTTP")) {
         alert("Network error - check your internet or API URL");

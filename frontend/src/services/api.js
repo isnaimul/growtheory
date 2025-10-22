@@ -26,7 +26,6 @@ class ApiService {
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Status:", response.status);
-        console.error("Response body:", errorText);
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
