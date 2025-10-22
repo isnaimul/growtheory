@@ -31,7 +31,6 @@
       "Humira"
     ]
   },
-
   "ABNB": {
     "default": "Airbnb, Inc.",
     "aliases": [
@@ -110,7 +109,7 @@
     ]
   },
   "AIV": {
-    "default": "Apartment Investment & Management Co ",
+    "default": "Apartment Investment & Management Co",
     "aliases": [
       "AIV",
       "APLE"
@@ -203,7 +202,6 @@
       "Abercrombie & Fitch"
     ]
   },
-
   "AON": {
     "default": "Aon plc",
     "aliases": [
