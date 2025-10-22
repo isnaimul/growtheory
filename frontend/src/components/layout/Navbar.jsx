@@ -5,12 +5,17 @@ import '../../styles/navbar.css';
 const Navbar = ({ showNewSearch = false }) => {
   const navigate = useNavigate();
 
+  const handleNavigation = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav className="navbar">
       <div className="container">
         <div 
           className="logo"
-          onClick={() => navigate('/')}
+          onClick={handleNavigation}
           style={{ cursor: 'pointer' }}
         >
           GrowTheory
@@ -18,12 +23,15 @@ const Navbar = ({ showNewSearch = false }) => {
         {showNewSearch ? (
           <button 
             className="cta-button"
-            onClick={() => navigate('/')}
+            onClick={handleNavigation}
           >
             New Search
           </button>
         ) : (
-          <button className="cta-button">
+          <button 
+            className="cta-button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             Get Started
           </button>
         )}
