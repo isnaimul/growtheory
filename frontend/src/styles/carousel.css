@@ -44,7 +44,7 @@
 /* Navigation Buttons */
 .carousel-nav {
   background: rgba(99, 102, 241, 0.1);
-  border: 2px solid #1ddb4c;
+  border: 2px solid #05deee;
   color: #fff;
   width: 60px;
   height: 60px;
@@ -60,7 +60,7 @@
 
 .carousel-nav:hover {
   background: rgba(99, 102, 241, 0.2);
-  border-color: #36eb72;
+  border-color: #01adad;
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(161, 231, 171, 0.3);
 }
@@ -135,7 +135,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(99, 102, 241, 0.1);
-  border: 3px solid #30f7aa;
+  border: 3px solid #20c5bd;
   border-radius: 50%;
   position: relative;
   z-index: 1;
@@ -152,8 +152,8 @@
 }
 
 .carousel-icon {
-  color: #32ec5a;
-  filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+  color: #20c5bd;
+  filter: drop-shadow(0 0 10px rgba(45, 170, 187, 0.5));
 }
 
 /* Title */
@@ -200,13 +200,13 @@
 }
 
 .carousel-features li::before {
-  content: "✓";
+  content: ">";
   position: absolute;
   left: 0;
-  color: #5dff80;
+  color: #2cfa9a;
   font-weight: 700;
   font-size: 1.3em;
-  text-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+  text-shadow: 0 0 10px rgba(123, 247, 236, 0.6);
 }
 
 .carousel-features li:hover {
@@ -227,7 +227,7 @@
   height: 12px;
   border-radius: 50%;
   background: rgba(99, 102, 241, 0.2);
-  border: 2px solid #6366f1;
+  border: 2px solid #594efc;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
@@ -240,9 +240,9 @@
 }
 
 .dot.active {
-  background: #6366f1;
-  border-color: #6366f1;
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+  background: #5ed4e4;
+  border-color: #5ed4e4;
+  box-shadow: 0 0 15px rgba(236, 236, 255, 0.6);
   transform: scale(1.3);
 }
 
@@ -251,7 +251,7 @@
   text-align: center;
   margin-top: 20px;
   font-size: 1.1em;
-  color: #888;
+  color: #9bfcf7;
   font-weight: 400;
 }
 

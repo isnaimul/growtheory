@@ -41,10 +41,9 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <h1>Make Every Application Count</h1>
+        <h1>Get an instant company evaluation!</h1>
         <p className="subtitle">
-          AI-powered intelligence that tells you which companies are worth your
-          time
+          Real-time company analysis for smarter decisions.
         </p>
 
         <div className="search-container">
@@ -63,7 +62,7 @@ const Hero = () => {
         </div>
 
         <p className="helper-text">
-          Get your intelligence report in under 3 minutes
+          Get a comprehensive analysis delivered to your dashboard in seconds!
         </p>
       </div>
     </section>

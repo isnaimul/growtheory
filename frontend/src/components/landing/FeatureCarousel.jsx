@@ -6,34 +6,34 @@ const features = [
   {
     id: 1,
     icon: Award,
-    title: "Instant Company Grading",
-    description: "Get a clear A-F grade on every company in seconds. Know immediately if a company is worth your application based on financial health, stability, and career opportunities.",
+    title: "Professional Report Cards",
+    description: "Get comprehensive company analysis in seconds. Whether you're job hunting or investing, see financial health, market sentiment, and growth signals synthesized into clear, actionable intelligence.",
     features: [
-      "Overall health score (0-100)",
-      "Letter grade for quick assessment",
-      "Data-driven evaluation"
+      "Overall assessment score (0-10)",
+      "Investment recommendations (Bullish/Neutral/Bearish)",
+      "Data-driven evaluation from multiple sources"
     ]
   },
   {
     id: 2,
     icon: DollarSign,
-    title: "Financial Health Transparency",
-    description: "See the numbers that matter. Revenue, market cap, profit margins, and employee count - understand if a company can offer job security and competitive compensation.",
+    title: "Real-Time Financial Intelligence",
+    description: "See the metrics that matter: Revenue, Market Cap, profit margins, employee count, and market sentiment - all pulled from live financial data sources.",
     features: [
-      "Real-time financial metrics",
-      "Market capitalization and revenue",
-      "Profitability and growth indicators"
+      "Live financial metrics and profitability",
+      "Market capitalization and growth indicators",
+      "News sentiment and market positioning"
     ]
   },
   {
     id: 3,
     icon: AlertTriangle,
-    title: "Career Risk Assessment",
-    description: "Make informed decisions with comprehensive pros and cons. Understand company culture, growth potential, and red flags before you invest time in an application.",
+    title: "Dual-Perspective Analysis",
+    description: "Make informed decisions with insights tailored to your needs. See hiring signals and career opportunities if you're job seeking, or investment outlook and risk factors if you're analyzing stocks.",
     features: [
-      "Green flags and opportunities",
-      "Red flags and risk factors",
-      "Work culture insights"
+      "Green flags: Growth opportunities and strengths",
+      "Red flags: Risk factors and considerations",
+      "Career outlook or investment recommendations"
     ]
   }
 ];
