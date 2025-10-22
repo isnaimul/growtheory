@@ -36,7 +36,6 @@ const ReportPage = () => {
       const parsedData = parseAnalysis(data);
       setReportData(parsedData);
     } catch (err) {
-      console.error("Error fetching report:", err);
       setError("Failed to load report");
     } finally {
       setLoading(false);
@@ -45,10 +44,6 @@ const ReportPage = () => {
 
   const parseAnalysis = (data) => {
     const analysis = data.full_analysis || "";
-
-    console.log("=== RAW ANALYSIS TEXT ===");
-    console.log(analysis);
-    console.log("========================");
 
     // Extract green flags
     const greenFlagsMatch = analysis.match(

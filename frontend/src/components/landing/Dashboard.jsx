@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TrendingUp, Clock, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  TrendingUp,
+  Clock,
+  Award,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import "../../styles/dashboard.css";
 import apiService from "../../services/api";
 
@@ -9,6 +15,10 @@ const Dashboard = () => {
   const [pagination, setPagination] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [cache, setCache] = useState({});
+  const [cacheTimestamp, setCacheTimestamp] = useState({});
+  const CACHE_DURATION = 5 * 60 * 1000;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,13 +28,26 @@ const Dashboard = () => {
   const fetchDashboard = async (page) => {
     try {
       setLoading(true);
-      console.log(`Fetching dashboard page ${page}...`);
+
+      const now = Date.now();
+      const cachedData = cache[page];
+      const cachedTime = cacheTimestamp[page];
+
+      if (cachedData && cachedTime && now - cachedTime < CACHE_DURATION) {
+        setCompanies(cachedData.companies);
+        setPagination(cachedData.pagination);
+        setLoading(false);
+        return;
+      }
+
       const data = await apiService.getDashboard(page);
-      console.log("Dashboard data received:", data);
+
       setCompanies(data.companies);
       setPagination(data.pagination);
+
+      setCache((prev) => ({ ...prev, [page]: data }));
+      setCacheTimestamp((prev) => ({ ...prev, [page]: now }));
     } catch (error) {
-      console.error("Failed to fetch dashboard:", error);
     } finally {
       setLoading(false);
     }
@@ -38,19 +61,28 @@ const Dashboard = () => {
     if (newPage >= 1 && newPage <= pagination.total_pages) {
       setCurrentPage(newPage);
       // Scroll to top of dashboard
-      document.querySelector('.dashboard-section')?.scrollIntoView({ behavior: 'smooth' });
+      document
+        .querySelector(".dashboard-section")
+        ?.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const getTimeAgo = (timestamp) => {
-    const now = new Date();
-    const then = new Date(timestamp);
-    const hours = Math.floor((now - then) / (1000 * 60 * 60));
+    const now = Date.now(); // milliseconds since epoch
+    const then = new Date(timestamp).getTime(); // also milliseconds
+    const diffMs = now - then;
 
-    if (hours < 1) return "Just now";
+    if (diffMs < 0) return "Just now"; // Handle future timestamps
+
+    const minutes = Math.floor(diffMs / (1000 * 60));
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (minutes < 1) return "Just now";
+    if (minutes === 1) return "1 minute ago";
+    if (minutes < 60) return `${minutes} minutes ago`;
     if (hours === 1) return "1 hour ago";
     if (hours < 24) return `${hours} hours ago`;
-    const days = Math.floor(hours / 24);
     if (days === 1) return "1 day ago";
     return `${days} days ago`;
   };
@@ -67,7 +99,25 @@ const Dashboard = () => {
       <section className="dashboard-section">
         <div className="container">
           <h2 className="dashboard-title">Recently Analyzed Companies</h2>
-          <div className="loading-state">Loading dashboard...</div>
+
+          {/* Skeleton cards while loading */}
+          <div className="dashboard-grid">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="company-card skeleton">
+                <div className="skeleton-header">
+                  <div className="skeleton-text"></div>
+                  <div className="skeleton-badge"></div>
+                </div>
+                <div className="skeleton-stats">
+                  <div className="skeleton-line"></div>
+                  <div className="skeleton-line"></div>
+                </div>
+                <div className="skeleton-footer">
+                  <div className="skeleton-line short"></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     );
@@ -90,7 +140,7 @@ const Dashboard = () => {
     <section className="dashboard-section">
       <div className="container">
         <h2 className="dashboard-title">Recently Analyzed Companies</h2>
-        
+
         <div className="dashboard-grid">
           {companies.map((company, index) => (
             <div
@@ -143,7 +193,9 @@ const Dashboard = () => {
                 return (
                   <button
                     key={pageNum}
-                    className={`page-number ${pageNum === currentPage ? 'active' : ''}`}
+                    className={`page-number ${
+                      pageNum === currentPage ? "active" : ""
+                    }`}
                     onClick={() => handlePageChange(pageNum)}
                   >
                     {pageNum}

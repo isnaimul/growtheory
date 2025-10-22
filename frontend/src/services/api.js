@@ -9,43 +9,33 @@ class ApiService {
   }
 
   async analyzeCompany(companyName, ticker = null) {
-  console.log('=== API Service analyzeCompany ===');
-  console.log('companyName:', companyName);
-  console.log('ticker:', ticker);
-  
-  try {
-    const payload = {
-      company: companyName,
-      ticker: ticker || companyName
-    };
-    console.log('Sending payload:', payload);
-    console.log('To URL:', `${this.baseUrl}${ANALYZE_ENDPOINT}`);
-    
-    const response = await fetch(`${this.baseUrl}${ANALYZE_ENDPOINT}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const payload = {
+        company: companyName,
+        ticker: ticker || companyName,
+      };
 
-    console.log('Response status:', response.status);
-    console.log('Response ok:', response.ok);
+      const response = await fetch(`${this.baseUrl}${ANALYZE_ENDPOINT}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.log('Error response body:', errorText);
-      throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Status:", response.status);
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error analyzing company:", error);
+      throw error;
     }
-
-    const data = await response.json();
-    console.log('Response data:', data);
-    return data;
-  } catch (error) {
-    console.error("Error analyzing company:", error);
-    throw error;
   }
-}
 
   async checkStatus() {
     try {
@@ -64,20 +54,21 @@ class ApiService {
   }
 
   async getDashboard(page = 1) {
-  try {
-    const response = await fetch(`${this.baseUrl}/dashboard?page=${page}`);
+    const url = `${this.baseUrl}/dashboard?page=${page}`;
+    try {
+      const response = await fetch(`${this.baseUrl}/dashboard?page=${page}`);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error fetching dashboard:", error);
+      throw error;
     }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching dashboard:", error);
-    throw error;
   }
-}
 
   async getReport(ticker) {
     try {

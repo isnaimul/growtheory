@@ -13,7 +13,6 @@ const Hero = () => {
   const { setIsLoading } = useReport();
 
   const handleCompanySelect = (ticker, name) => {
-    console.log("Company selected:", ticker, name);
     setCompanyInput(name); // Update display
     setSelectedTicker(ticker); // Store ticker for analysis
   };
@@ -31,8 +30,14 @@ const Hero = () => {
       setCompanyInput("");
       setSelectedTicker(null);
     } catch (error) {
+      console.error("Error message:", error.message);
+
+      if (!error.message.includes("HTTP")) {
+        alert("Network error - check your internet or API URL");
+      } else {
+        alert(`Error: ${error.message}`);
+      }
       alert("Error analyzing company. Please try again.");
-      console.error("Analysis error:", error);
     } finally {
       setIsLoading(false);
     }
