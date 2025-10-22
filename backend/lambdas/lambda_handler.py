@@ -193,7 +193,7 @@ def handle_get_report(event, context):
 
 def get_or_create_analysis(company, ticker):
     """Core caching logic - check cache first, then run agent if needed"""
-
+    global DASHBOARD_CACHE, CACHE_TIMESTAMP
     cache_key = ticker.upper()
 
     # Try to get from cache
@@ -267,8 +267,12 @@ def get_or_create_analysis(company, ticker):
     try:
         cache_table.put_item(Item=cache_item)
         print(f"✓ Cached result for {cache_key}")
+        DASHBOARD_CACHE = None
+        CACHE_TIMESTAMP = None
+        print("✓ Invalidated dashboard cache - fresh data will be fetched")
     except Exception as e:
         print(f"Failed to cache: {e}")
+        traceback.print_exc()
         # Continue anyway - user still gets their result
 
     # Return fresh analysis
