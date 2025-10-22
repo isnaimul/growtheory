@@ -1316,12 +1316,6 @@
       "Oracle"
     ]
   },
-  "PAE": {
-    "default": "PAE Incorporated",
-    "aliases": [
-      "PAE"
-    ]
-  },
   "PCAR": {
     "default": "PACCAR Inc.",
     "aliases": [
@@ -1353,11 +1347,11 @@
     ]
   },
   "PG": {
-    "default": "Gillette",
+    "default": "Procter & Gamble",
     "aliases": [
       "P&G",
       "Pampers",
-      "Procter & Gamble"
+      "Gillette"
     ]
   },
   "PKG": {
@@ -1440,13 +1434,6 @@
       "Ross Stores"
     ]
   },
-  "RTN": {
-    "default": "Raytheon Technologies Corporation",
-    "aliases": [
-      "RTX",
-      "Raytheon"
-    ]
-  },
   "RTX": {
     "default": "Raytheon Technologies Corporation",
     "aliases": [
@@ -1493,18 +1480,6 @@
     "default": "Sherwin-Williams Company",
     "aliases": [
       "Sherwin-Williams"
-    ]
-  },
-  "SIVB": {
-    "default": "SVB Financial Group",
-    "aliases": [
-      "Silicon Valley Bank"
-    ]
-  },
-  "SKX": {
-    "default": "Skechers",
-    "aliases": [
-      "Skechers U.S.A."
     ]
   },
   "SLB": {
@@ -1596,10 +1571,8 @@
     "aliases": []
   },
   "TMP": {
-    "default": "Tesla, Inc.",
-    "aliases": [
-      "Tesla Motors"
-    ]
+    "default": "Tompkins Financial Group",
+    "aliases": []
   },
   "TMUS": {
     "default": "T-Mobile US Inc.",
